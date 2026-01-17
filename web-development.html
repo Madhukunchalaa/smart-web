@@ -84,30 +84,65 @@
             border-color: var(--dark-text);
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section (Figma Design) --- */
         .hero-ref {
-            text-align: center;
-            padding-top: 160px;
-            padding-bottom: 80px;
-            background: radial-gradient(circle at 50% 50%, rgba(249, 74, 41, 0.03) 0%, transparent 50%);
+            position: relative;
+            background-color: #fff;
+            /* Restore padding to push content below fixed header */
+            padding-top: 160px; 
+            padding-bottom: 60px;
+            overflow: hidden;
+            text-align: left;
+            color: var(--dark-text);
+            /* Remove strict 100vh centering that caused overlap */
+            /* min-height: 90vh; Optional: keep it tall but not forced */
+            display: block; /* Switch back to block to respect padding-top properly */
         }
 
+        .hero-ref .auto-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Content Column */
         .hero-ref h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
+            color: #111;
         }
-
+        
         .hero-ref h1 span {
             color: var(--primary-color);
         }
 
+        .hero-ref h2 {
+            color: #333; 
+        }
+        
+        .hero-ref p {
+            color: #666;
+        }
+
+        /* Hero Image styling */
+        .hero-image-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-main-img {
+            width: 129%; /* Make it slightly larger than container to fill space */
+            max-width: none; /* Allow overflow */
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+            transform: translateX(17%); /* Shift slightly right since we made it wider */
+        }
+
         .hero-ref p {
             font-size: 1.25rem;
-            color: var(--light-text);
+            color: rgba(255,255,255, 0.8); /* Light text */
             margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
@@ -206,200 +241,238 @@
             color: var(--dark-text);
         }
 
-        /* --- Why Choose Us (Accordion Redesign) --- */
-        .why-choose-section {
-            padding: 100px 0;
-            background-color: #fff;
-            overflow: hidden;
+        /* --- Bento Grid Layout CSS --- */
+        .bento-grid-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            grid-template-rows: repeat(2, auto);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        .why-choose-section h2 {
-            font-size: 3rem;
-            margin-bottom: 50px;
-            text-align: center;
-            font-weight: 800;
-        }
-
-        /* Accordion Container */
-        .accordion-container {
-            display: flex;
-            width: 100%;
-            height: 500px; /* Fixed height for the interaction */
-            gap: 10px;
-        }
-
-        .accordion-item {
+        .bento-card {
+            background: #fff;
+            border-radius: 30px;
+            padding: 35px;
             position: relative;
-            flex: 1; /* Default state */
-            background: #f8f9fa;
-            border-radius: 20px;
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            border: 1px solid transparent;
         }
 
-        /* Interaction: Expand on Hover */
-        .accordion-item:hover {
-            flex: 3; /* Grow state */
-            background: #fff;
-            border-color: var(--primary-color);
-            box-shadow: 0 20px 50px rgba(249, 74, 41, 0.15);
+        .bento-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+            border-color: rgba(249, 74, 41, 0.2);
         }
 
-        /* Active Item Styling */
-        .accordion-item:hover .icon-bg {
-            opacity: 0.1;
-            transform: scale(1.2) rotate(-10deg);
+        /* Card Variants */
+        .bento-large {
+            grid-row: span 2;
+            background: linear-gradient(135deg, #fff 0%, #fff5f2 100%);
+            justify-content: space-between;
+        }
+        
+        .bento-wide {
+            grid-column: span 2;
         }
 
-        .accordion-item:hover h3 {
-            transform: translateY(0);
-            font-size: 1.8rem;
-            color: var(--primary-color);
-        }
-
-        .accordion-item:hover p {
-            opacity: 1;
-            transform: translateY(0);
-            max-height: 200px;
-        }
-
-        /* Inner Content */
-        .accordion-content {
-            z-index: 2;
-        }
-
-        .accordion-item h3 {
-            font-size: 1.2rem; /* Vertical text size? No, keep standard */
+        /* Content Styling */
+        .bento-card h3 {
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            white-space: nowrap;
-            transition: all 0.5s ease;
-            transform-origin: left bottom;
-        }
-
-        .accordion-item p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--light-text);
-            opacity: 0; /* Hidden by default */
-            max-height: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease 0.1s; /* Slight delay */
-            overflow: hidden;
-        }
-
-        /* Large Background Icon */
-        .accordion-item .icon-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 8rem;
-            color: var(--dark-text);
-            opacity: 0.05;
-            transition: all 0.5s ease;
-            pointer-events: none;
-        }
-        
-        /* Small Icon indicator */
-        .accordion-item .small-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(249, 74, 41, 0.1);
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin-bottom: auto; /* Push to top */
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .accordion-item:hover .small-icon {
-            background: var(--primary-color);
-            color: #fff;
-        }
-
-        /* Mobile Responsiveness: Stack vertically */
-        @media (max-width: 991px) {
-            .accordion-container {
-                flex-direction: column;
-                height: auto;
-            }
-            
-            .accordion-item {
-                height: auto;
-                min-height: 150px;
-                flex: none; /* Disable flex scaling */
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            
-            .accordion-item:hover {
-                transform: none; /* No scaling */
-            }
-            
-            .accordion-item p {
-                opacity: 1;
-                max-height: 200px;
-                transform: none;
-            }
-            
-            .accordion-item .icon-bg {
-                top: 50%;
-                left: 85%;
-                font-size: 6rem;
-            }
-        }
-
-        /* --- Execution (Process) --- */
-        .execution-ref .row-item {
-            margin-bottom: 100px;
-        }
-
-        .execution-ref h3 {
-            font-size: 2rem;
+            color: #222;
             margin-bottom: 15px;
         }
 
-        .execution-ref p {
-            font-size: 1.1rem;
-            color: var(--light-text);
-            line-height: 1.6;
-            margin-bottom: 30px;
+        .bento-card p {
+            color: #666;
+            margin-bottom: 0;
+            font-size: 1rem;
+            line-height: 1.5;
         }
-
-        .execution-ref img {
-            border-radius: 8px;
+        
+        /* Icon styles */
+        .bento-icon-lg img {
             width: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        /* --- Deployments (Portfolio) --- */
-        .deployments-ref {
-            background-color: var(--bg-off-white);
-        }
-        
-        .project-card {
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        
-        .project-card img {
+            max-width: 220px;
+            display: block;
+            margin: 20px auto 0;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
             transition: transform 0.5s ease;
         }
         
-        .project-card:hover img {
-            transform: scale(1.05);
+        .bento-large:hover .bento-icon-lg img {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .bento-content-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+        
+        .bento-wide .icon-side img {
+            max-width: 140px;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1));
+        }
+
+        .bento-standard .icon-top {
+            margin-bottom: 20px;
+        }
+        
+        .bento-standard .icon-top img {
+            height: 80px;
+            width: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .bento-grid-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            .bento-large, .bento-wide {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .bento-content-row {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .bento-card {
+                text-align: center;
+                align-items: center;
+            }
+            .pl-4 { padding-left: 0 !important; margin-top: 20px; }
+            .bento-wide .icon-side img { margin-bottom: 15px; }
+        }
+
+        /* --- Unique Process Section (Flow) --- */
+        .process-unique {
+            padding: 120px 0;
+            background: #fdfdfd;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-unique h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        /* The Connecting Line (Desktop) */
+        .process-line-container {
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 600px;
+            z-index: 0;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        .process-path {
+            fill: none;
+            stroke: var(--primary-color);
+            stroke-width: 4;
+            stroke-dasharray: 10, 10;
+        }
+
+        /* Steps Container */
+        .process-steps {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+        }
+
+        /* Alternating Layout */
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+        .process-step:nth-child(even) .step-text {
+            align-items: flex-end;
+        }
+
+        /* Step Card Visuals */
+        .step-card {
+            flex: 0 0 500px;
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            transform: perspective(1000px) rotateY(0deg);
+            transition: all 0.5s ease;
+        }
+
+        .process-step:hover .step-card {
+             transform: perspective(1000px) rotateY(5deg) translateY(-10px);
+             box-shadow: 0 30px 70px rgba(249, 74, 41, 0.2);
+        }
+
+        .step-card img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Step Text */
+        .step-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .step-number {
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(249, 74, 41, 0.1);
+            line-height: 1;
+            margin-bottom: -20px;
+            position: relative;
+            z-index: -1;
+        }
+
+        .step-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .step-text p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            max-width: 400px;
+        }
+
+        /* Mobile */
+        @media (max-width: 991px) {
+            .process-path { display: none; }
+            .process-step { 
+                flex-direction: column !important; 
+                text-align: center !important;
+                gap: 30px;
+            }
+            .step-text { align-items: center !important; }
+            .step-card { flex: auto; width: 100%; max-width: 500px; }
+            .process-steps { gap: 60px; }
         }
 
         /* --- CTA --- */
@@ -441,11 +514,193 @@
             font-weight: 600;
         }
 
-        @media (max-width: 768px) {
-            .hero-ref h1 { font-size: 2.8rem; }
-            section { padding: 60px 0; }
-            .execution-ref .row-item { margin-bottom: 60px; }
-            .row-reverse-mobile { flex-direction: column-reverse; }
+        /* --- Floating Nav (Redesign) --- */
+        .page-wrapper {
+            padding-top: 0 !important; /* Override standard padding */
+        }
+        
+        .floating-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 15px 30px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s ease;
+        }
+        
+        /* Sticky state could be handled by JS, but this fixed island works well always */
+        
+        .floating-nav .nav-logo img {
+            height: 40px;
+        }
+        
+        .floating-nav ul.nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+        
+        .floating-nav ul.nav-links li a {
+            color: var(--dark-text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .floating-nav ul.nav-links li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .floating-nav .nav-cta {
+            background: var(--dark-text);
+            color: #fff !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .floating-nav .nav-cta:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu Trigger (Simplified) */
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 991px) {
+            .floating-nav ul.nav-links {
+                display: none; /* Hide links on mobile for now - simplified */
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .hero-ref {
+                padding-top: 140px; /* Adjust hero padding for nav */
+            }
+        }
+        /* --- Unique Contact Section (Vibrant Design) --- */
+        .unique-contact-section {
+            position: relative;
+            background: linear-gradient(135deg, #ff8c61 0%, #f94a29 100%);
+            padding: 100px 0;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        /* Abstract Background Shapes (Subtle) */
+        .shape-circle-1 {
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .shape-circle-2 {
+            position: absolute;
+            bottom: -150px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .contact-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.15); /* Softer, deeper shadow */
+            color: #333;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact-card h3 {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #222;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
+            margin-left: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: 2px solid #edf2f7; /* Subtle border */
+            background: #f8f9fa;
+            box-shadow: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .contact-input:focus {
+            background: #fff;
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 20px rgba(249, 74, 41, 0.15);
+            outline: none;
+        }
+        
+        .contact-input::placeholder {
+            color: #adb5bd;
+            font-weight: 400;
+        }
+        
+        select.contact-input {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F94A29' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+        }
+
+        .icon-circle {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -454,104 +709,51 @@
 
 <div class="page-wrapper">
 
-    <!-- Main Header (Reused) -->
-  <header class="main-header header-style-one">
-    <div class="header-lower">
-      <div class="auto-container">
-        <!-- Main box -->
-        <div class="main-box">
-          <div class="logo-box">
-            <div class="logo"><a href="index.html"><img src="assets/images/Asset 1.png" alt="" title="Tronis"></a></div>
-          </div>
-
-          <!--Nav Box-->
-          <div class="nav-outer">    
-            <nav class="nav main-menu">
-              <ul class="navigation">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
-            </nav>
-            <!-- Main Menu End-->
-          </div>
-
-          <div class="outer-box">
-            <div class="search-btn">
-              <a href="#" class="search"><i class="flaticon-search-3"></i></a>
-            </div>
-            <div class="btn">
-              <a href="contact.html" class="theme-btn v2">Let’s Talk</a>
-            </div>
-            <div class="mobile-nav-toggler">
-              <i class="fa fa-bars"></i>
-            </div>
-          </div>
+    <!-- Floating Navigation Bar -->
+    <nav class="floating-nav">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="assets/images/Asset 1.png" alt="Smart Solutions">
+            </a>
         </div>
-      </div>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-      <div class="menu-backdrop"></div>
-      <nav class="menu-box">
-        <div class="upper-box">
-          <div class="nav-logo"><a href="index.html"><img src="assets/images/Asset 1.png" alt="" title=""></a></div>
-          <div class="close-btn"><i class="icon fa fa-times"></i></div>
-        </div>
-        <ul class="navigation clearfix"></ul>
-        <ul class="contact-list-one">
-          <li>
-            <div class="contact-info-box">
-              <i class="icon lnr-icon-phone-handset"></i>
-              <span class="title">Call Now</span>
-              <a href="tel:+916281939690">+91 628 193 9690</a>
-            </div>
-          </li>
-          <li>
-            <div class="contact-info-box">
-              <span class="icon lnr-icon-envelope1"></span>
-              <span class="title">Send Email</span>
-              <a href="mailto:contact@smartsolutionsdigi.com">contact@smartsolutionsdigi.com</a>
-            </div>
-          </li>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
-      </nav>
-    </div>
-    
-    <!-- Sticky Header -->
-    <div class="sticky-header">
-      <div class="auto-container">
-        <div class="inner-container">
-          <div class="logo">
-            <a href="index.html" title=""><img src="assets/images/footerlogo.png" alt="" title="" style="width: 100%;"></a>
-          </div>
-          <div class="nav-outer">
-            <nav class="main-menu">
-              <div class="navbar-collapse show collapse clearfix">
-                <ul class="navigation clearfix"></ul>
-              </div>
-            </nav>
-            <div class="mobile-nav-toggler">
-              <i class="fa fa-bars"></i>
-            </div>
-          </div>
+
+        <a href="contact.html" class="nav-cta">Get Started</a>
+        
+        <div class="mobile-toggle">
+            <i class="fa fa-bars"></i>
         </div>
-      </div>
-    </div>
-  </header>
-  <!--End Main Header -->
+    </nav>
 
     <!-- Hero Section -->
+    <!-- Hero Section (Figma Design) -->
     <section class="hero-ref">
         <div class="auto-container">
-            <h1>Website Development <br><span>Services</span></h1>
-            <h2 style="font-size: 1.5rem; margin-bottom: 20px; font-weight: 600;">Build a Website That Helps Your Business Grow</h2>
-            <p>Your website should make it easy for customers to understand your services, trust your business and get in touch. At Smart Solutions, we build websites that are clear, fast, easy to use and focused on real business needs.</p>
-            <div class="btn-box">
-                <a href="contact.html" class="btn-custom">Get Started</a>
-                <a href="#services" class="btn-custom-outline">Our Services</a>
+            <div class="row align-items-center">
+                <!-- Content Column -->
+                <div class="col-lg-6 mb-5 mb-lg-0 text-left">
+                    <h1 class="font-weight-bold mb-3" style="font-size: 4.5rem; line-height: 1.1;">Website Development <br><span style="color: var(--primary-color);">Services</span></h1>
+                    <h4 class="mb-3 mt-4" style="font-weight: 700; color: #333; font-size: 1.5rem;">Build a Website That Helps Your Business Grow</h4>
+                    <p class="mb-5" style="color: #666; font-size: 1.2rem; max-width: 550px; line-height: 1.6;">Your website should make it easy for customers to understand your services, trust your business and get in touch. At Smart Solutions, we build websites that are clear, fast, easy to use and focused on real business needs.</p>
+                    
+                    <div class="btn-box d-flex align-items-center">
+                        <a href="contact.html" class="btn-custom" style="padding: 18px 45px; font-size: 1rem; border-radius: 50px;">Get Started</a>
+                        <a href="#services" class="btn-custom-outline ml-3" style="padding: 18px 45px; color: #333; border-color: #ddd; font-size: 1rem; border-radius: 50px;">Our Services</a>
+                    </div>
+                </div>
+                
+                <!-- Image Column -->
+                <div class="col-lg-6 text-center">
+                    <div class="hero-image-wrapper">
+                        <img src="assets/images/generated/hero_main_v3.png" alt="Smart Solutions Ecosystem" class="img-fluid hero-main-img">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -565,7 +767,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="eco-card">
-                        <img src="assets/images/generated/custom_ui_design.png" alt="Custom Websites">
+                        <img src="assets/images/generated/service_real_1.png" alt="Custom Websites">
                         <div class="content">
                             <h4>Custom Business Websites</h4>
                             <p class="text-muted">Tailored solutions matching your specific goals.</p>
@@ -574,7 +776,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="eco-card">
-                        <img src="assets/images/generated/ecommerce_dashboard.png" alt="E-commerce">
+                        <img src="assets/images/generated/service_real_2.png" alt="E-commerce">
                         <div class="content">
                             <h4>E-commerce Websites</h4>
                             <p class="text-muted">Online stores to sell your products effectively.</p>
@@ -616,123 +818,200 @@
     </section>
 
     <!-- Why Choose Us Section (Accordion Redesign) -->
-    <section class="why-choose-section">
+    <!-- Why Choose Us Section (New 3D Grid Redesign) -->
+    <!-- Why Choose Us Section (Bento Grid Redesign) -->
+    <section class="why-choose-section" style="background: #fbfbfb; padding: 120px 0;">
         <div class="auto-container">
-            <h2>Why Choose Smart Solutions?</h2>
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="font-weight-bold" style="font-size: 3rem; margin-bottom: 15px; letter-spacing: -1px;">Why Choose <span style="color: var(--primary-color);">Smart Solutions?</span></h2>
+                    <p class="text-muted" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">We combine cutting-edge technology and human-centric design to build websites that work harder for your business.</p>
+                </div>
+            </div>
             
-            <div class="accordion-container">
-                <!-- Item 1 -->
-                <div class="accordion-item">
-                    <i class="fa-solid fa-layer-group icon-bg"></i>
-                    <div class="small-icon">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                    <div class="accordion-content">
+            <div class="bento-grid-container">
+                
+                <!-- Feature 1: Everyday Use (Tall/Large) -->
+                <div class="bento-card bento-large">
+                    <div class="bento-content">
                         <h3>Built for Everyday Use</h3>
                         <p>Our websites are easy to manage, secure, mobile-friendly and ready to grow with your business.</p>
+                        <div class="bento-icon-lg">
+                            <img src="assets/images/generated/icon_3d_everyday.png" alt="Everyday Use">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="accordion-item">
-                    <i class="fa-solid fa-laptop-file icon-bg"></i>
-                    <div class="small-icon">
-                        <i class="fa-solid fa-pen-ruler"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <h3>Easy Management</h3>
-                        <p>Our websites are built to be easily updated and managed by you without needing a developer.</p>
+                <!-- Feature 2: Easy Management (Wide) -->
+                <div class="bento-card bento-wide">
+                    <div class="bento-content-row">
+                        <div class="text-side">
+                            <h3>Easy Management</h3>
+                            <p>Update content easily without needing a developer.</p>
+                        </div>
+                        <div class="icon-side">
+                            <img src="assets/images/generated/icon_3d_management.png" alt="Management">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Item 3 -->
-                <div class="accordion-item">
-                    <i class="fa-solid fa-shield-halved icon-bg"></i>
-                    <div class="small-icon">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                    <div class="accordion-content">
+                <!-- Feature 3: Secure Core (Standard) -->
+                <div class="bento-card bento-standard">
+                    <div class="bento-content">
+                        <div class="icon-top">
+                            <img src="assets/images/generated/icon_3d_secure.png" alt="Secure">
+                        </div>
                         <h3>Secure Core</h3>
-                        <p>Built with enterprise-grade security best practices to keep your data and customers safe.</p>
+                        <p>Enterprise-grade security best practices.</p>
                     </div>
                 </div>
 
-                <!-- Item 4 -->
-                <div class="accordion-item">
-                    <i class="fa-solid fa-mobile-screen icon-bg"></i>
-                    <div class="small-icon">
-                        <i class="fa-solid fa-mobile"></i>
-                    </div>
-                    <div class="accordion-content">
+                <!-- Feature 4: Mobile Friendly (Standard) -->
+                <div class="bento-card bento-standard">
+                    <div class="bento-content">
+                        <div class="icon-top">
+                            <img src="assets/images/generated/icon_3d_mobile.png" alt="Mobile">
+                        </div>
                         <h3>Mobile Friendly</h3>
-                        <p>Seamless experience on all devices, ensuring your site looks great from phones to desktops.</p>
+                        <p>Seamless experience on all devices.</p>
                     </div>
                 </div>
 
-                <!-- Item 5 -->
-                <div class="accordion-item">
-                    <i class="fa-solid fa-chart-line icon-bg"></i>
-                    <div class="small-icon">
-                        <i class="fa-solid fa-arrow-trend-up"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <h3>Scalable</h3>
-                        <p>Architecture that gets ready to grow with your business needs, from 100 to 1M visitors.</p>
+                <!-- Feature 5: Scalable (Wide) -->
+                <div class="bento-card bento-wide">
+                     <div class="bento-content-row">
+                        <div class="icon-side">
+                            <img src="assets/images/generated/icon_3d_scalable.png" alt="Scalable">
+                        </div>
+                        <div class="text-side pl-4">
+                            <h3>Scalable Architecture</h3>
+                            <p>Ready to grow from 100 to 1M visitors without breaking a sweat.</p>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Execution (Process) -->
-    <section class="execution-ref">
+    <!-- Execution (Process) Unique Flow -->
+    <section class="process-unique">
+        <!-- Background SVG Line for Flow -->
+        <svg class="process-line-container" viewBox="0 0 800 600">
+            <path class="process-path" d="M100,50 C200,50 300,150 400,150 S600,250 700,250 S600,450 400,450 S200,550 100,550" />
+        </svg>
+
         <div class="auto-container">
-            <div class="text-center mb-5">
-                <h2>How We Build Your Website</h2>
-            </div>
+            <h2>How We Build Your Website</h2>
             
-            <!-- Step 1 -->
-            <div class="row align-items-center row-item">
-                <div class="col-lg-6">
-                    <h3>Understand & Plan</h3>
-                    <p>We understand your business and plan a clear website structure.</p>
+            <div class="process-steps">
+                <!-- Step 1 -->
+                <div class="process-step">
+                    <div class="step-card">
+                        <img src="assets/images/generated/custom_ui_design.png" alt="Plan">
+                    </div>
+                    <div class="step-text">
+                        <div class="step-number">01</div>
+                        <h3>Understand & Plan</h3>
+                        <p>We dive deep into your business goals to map out a strategy that ensures success from day one.</p>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <img src="assets/images/generated/custom_ui_design.png" alt="Planning">
-                </div>
-            </div>
 
-            <!-- Step 2 -->
-            <div class="row align-items-center row-item row-reverse-mobile">
-                <div class="col-lg-6 order-lg-2">
-                    <h3>Design & Develop</h3>
-                    <p>We design and develop with care, ensuring a high-quality result.</p>
+                <!-- Step 2 -->
+                <div class="process-step">
+                    <div class="step-card">
+                        <img src="assets/images/generated/mobile_app_dev.png" alt="Design">
+                    </div>
+                    <div class="step-text">
+                        <div class="step-number">02</div>
+                        <h3>Design & Develop</h3>
+                        <p>Our team crafts pixel-perfect designs and writes clean, robust code to bring the vision to life.</p>
+                    </div>
                 </div>
-                <div class="col-lg-6 order-lg-1">
-                    <img src="assets/images/generated/mobile_app_dev.png" alt="Development">
-                </div>
-            </div>
 
-            <!-- Step 3 -->
-            <div class="row align-items-center row-item">
-                <div class="col-lg-6">
-                    <h3>Test & Launch</h3>
-                    <p>We test thoroughly and provide support after launch.</p>
-                </div>
-                <div class="col-lg-6">
-                    <img src="assets/images/generated/ecommerce_dashboard.png" alt="Launch">
+                <!-- Step 3 -->
+                <div class="process-step">
+                    <div class="step-card">
+                        <img src="assets/images/generated/ecommerce_dashboard.png" alt="Launch">
+                    </div>
+                    <div class="step-text">
+                        <div class="step-number">03</div>
+                        <h3>Test & Launch</h3>
+                        <p>Rigorous testing across all devices guarantees a flawless launch and immediate impact.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-ref">
+    <!-- Unique Contact Section -->
+    <section class="unique-contact-section">
+        <!-- Abstract Background Shapes -->
+        <div class="shape-circle-1"></div>
+        <div class="shape-circle-2"></div>
+
         <div class="auto-container">
-            <h2>Get Started</h2>
-            <p class="mb-4 lead">Whether you need a new website or want to improve your existing one, Smart Solutions is ready to help.</p>
-            <div class="btn-box">
-                <a href="contact.html" class="btn-custom">Contact Us Today</a>
+            <div class="row align-items-center">
+                <!-- Text Column -->
+                <div class="col-lg-5 mb-5 mb-lg-0 text-white">
+                    <h2 class="display-4 font-weight-bold mb-4">Ready to Scale Your Business?</h2>
+                    <p class="lead mb-5" style="opacity: 0.9;">Let's build a website that not only looks amazing but drives real growth. Schedule your consultation today.</p>
+                    
+                    <div class="feature-list">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="icon-circle mr-3"><i class="fa-solid fa-check"></i></div>
+                            <span>Free Initial Consultation</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="icon-circle mr-3"><i class="fa-solid fa-check"></i></div>
+                            <span>Timeline & Cost Estimate</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="icon-circle mr-3"><i class="fa-solid fa-check"></i></div>
+                            <span>No Hidden Fees</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="contact-card">
+                        <h3 class="mb-4 text-dark">Get a Quote</h3>
+                        <form action="#" method="POST">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control contact-input" name="name" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control contact-input" name="email" placeholder="john@example.com" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Phone</label>
+                                    <input type="text" class="form-control contact-input" name="phone" placeholder="+1 234...">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Service</label>
+                                    <select class="form-control contact-input" name="service">
+                                        <option value="" disabled selected>Select...</option>
+                                        <option value="Custom Website">Custom Website</option>
+                                        <option value="E-commerce">E-commerce</option>
+                                        <option value="App Development">App Development</option>
+                                        <option value="Redesign">Website Redesign</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <label class="form-label">Project Details</label>
+                                    <textarea class="form-control contact-input" name="message" rows="3" placeholder="Tell us briefly about your goals..." style="border-radius: 15px;"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn-custom btn-block w-100" style="border: none; cursor: pointer;">Send Message <i class="fa-solid fa-paper-plane ml-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
