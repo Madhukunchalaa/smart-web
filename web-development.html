@@ -20,689 +20,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+    <link href="assets/css/web-dev.css" rel="stylesheet">
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17866862528"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-        :root {
-            --primary-color: #F94A29;
-            --dark-text: #111111;
-            --light-text: #555555;
-            --bg-light: #ffffff;
-            --bg-off-white: #f8f9fa;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--dark-text);
-            background-color: var(--bg-light);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            color: var(--dark-text);
-            letter-spacing: -0.02em;
-        }
-
-        /* --- Section Defaults --- */
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .btn-custom {
-            background-color: var(--dark-text);
-            color: #fff;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            display: inline-block;
-            transition: all 0.3s ease;
-            text-transform: capitalize;
-        }
-
-        .btn-custom:hover {
-            background-color: var(--primary-color);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        .btn-custom-outline {
-            background-color: transparent;
-            color: var(--dark-text);
-            border: 2px solid #e1e1e1;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            display: inline-block;
-            transition: all 0.3s ease;
-            margin-left: 15px;
-        }
-
-        .btn-custom-outline:hover {
-            border-color: var(--dark-text);
-        }
-
-        /* --- Hero Section (Figma Design) --- */
-        .hero-ref {
-            position: relative;
-            background-color: #fff;
-            /* Restore padding to push content below fixed header */
-            padding-top: 160px; 
-            padding-bottom: 60px;
-            overflow: hidden;
-            text-align: left;
-            color: var(--dark-text);
-            /* Remove strict 100vh centering that caused overlap */
-            /* min-height: 90vh; Optional: keep it tall but not forced */
-            display: block; /* Switch back to block to respect padding-top properly */
-        }
-
-        .hero-ref .auto-container {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Content Column */
-        .hero-ref h1 {
-            color: #111;
-        }
-        
-        .hero-ref h1 span {
-            color: var(--primary-color);
-        }
-
-        .hero-ref h2 {
-            color: #333; 
-        }
-        
-        .hero-ref p {
-            color: #666;
-        }
-
-        /* Hero Image styling */
-        .hero-image-wrapper {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-main-img {
-            width: 129%; /* Make it slightly larger than container to fill space */
-            max-width: none; /* Allow overflow */
-            height: auto;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
-            transform: translateX(17%); /* Shift slightly right since we made it wider */
-        }
-
-        .hero-ref p {
-            font-size: 1.25rem;
-            color: rgba(255,255,255, 0.8); /* Light text */
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* --- Ecosystems (Services Grid) --- */
-        .ecosystems-section {
-            padding-bottom: 30px;
-        }
-        
-        .section-header-ref {
-            margin-bottom: 50px;
-        }
-
-        .section-header-ref h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .eco-card {
-            background: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            height: 100%;
-            position: relative;
-        }
-
-        .eco-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .eco-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-
-        .eco-card .content {
-            padding: 20px 0;
-        }
-
-        .eco-card h4 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- Split Section (Engineering) --- */
-        .split-ref {
-            padding: 100px 0;
-            background-color: #fff;
-        }
-
-        .split-ref h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .split-ref img {
-            border-radius: 12px;
-            width: 100%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
-
-        .feature-list-ref li {
-            margin-bottom: 15px;
-            font-weight: 500;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .feature-list-ref li i {
-            color: var(--primary-color);
-            margin-right: 15px;
-            font-size: 14px;
-        }
-
-        /* --- Performance Stats --- */
-        .stats-ref {
-            padding: 80px 0;
-        }
-        
-        .stat-item h3 {
-            font-size: 4rem;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-            font-weight: 800;
-        }
-        
-        .stat-item p {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--dark-text);
-        }
-
-        /* --- Bento Grid Layout CSS --- */
-        .bento-grid-container {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr 1fr;
-            grid-template-rows: repeat(2, auto);
-            gap: 24px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .bento-card {
-            background: #fff;
-            border-radius: 30px;
-            padding: 35px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border: 1px solid rgba(0,0,0,0.03);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .bento-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
-            border-color: rgba(249, 74, 41, 0.2);
-        }
-
-        /* Card Variants */
-        .bento-large {
-            grid-row: span 2;
-            background: linear-gradient(135deg, #fff 0%, #fff5f2 100%);
-            justify-content: space-between;
-        }
-        
-        .bento-wide {
-            grid-column: span 2;
-        }
-
-        /* Content Styling */
-        .bento-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #222;
-            margin-bottom: 15px;
-        }
-
-        .bento-card p {
-            color: #666;
-            margin-bottom: 0;
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-        
-        /* Icon styles */
-        .bento-icon-lg img {
-            width: 100%;
-            max-width: 220px;
-            display: block;
-            margin: 20px auto 0;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
-            transition: transform 0.5s ease;
-        }
-        
-        .bento-large:hover .bento-icon-lg img {
-            transform: scale(1.05) rotate(5deg);
-        }
-
-        .bento-content-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 100%;
-        }
-        
-        .bento-wide .icon-side img {
-            max-width: 140px;
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1));
-        }
-
-        .bento-standard .icon-top {
-            margin-bottom: 20px;
-        }
-        
-        .bento-standard .icon-top img {
-            height: 80px;
-            width: auto;
-        }
-
-        /* Responsive */
-        @media (max-width: 991px) {
-            .bento-grid-container {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-            }
-            .bento-large, .bento-wide {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-            .bento-content-row {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
-            .bento-card {
-                text-align: center;
-                align-items: center;
-            }
-            .pl-4 { padding-left: 0 !important; margin-top: 20px; }
-            .bento-wide .icon-side img { margin-bottom: 15px; }
-        }
-
-        /* --- Unique Process Section (Flow) --- */
-        .process-unique {
-            padding: 120px 0;
-            background: #fdfdfd;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .process-unique h2 {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        /* The Connecting Line (Desktop) */
-        .process-line-container {
-            position: absolute;
-            top: 200px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 600px;
-            z-index: 0;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-        
-        .process-path {
-            fill: none;
-            stroke: var(--primary-color);
-            stroke-width: 4;
-            stroke-dasharray: 10, 10;
-        }
-
-        /* Steps Container */
-        .process-steps {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 100px;
-        }
-
-        .process-step {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            position: relative;
-        }
-
-        /* Alternating Layout */
-        .process-step:nth-child(even) {
-            flex-direction: row-reverse;
-            text-align: right;
-        }
-        .process-step:nth-child(even) .step-text {
-            align-items: flex-end;
-        }
-
-        /* Step Card Visuals */
-        .step-card {
-            flex: 0 0 500px;
-            position: relative;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            transform: perspective(1000px) rotateY(0deg);
-            transition: all 0.5s ease;
-        }
-
-        .process-step:hover .step-card {
-             transform: perspective(1000px) rotateY(5deg) translateY(-10px);
-             box-shadow: 0 30px 70px rgba(249, 74, 41, 0.2);
-        }
-
-        .step-card img {
-            width: 100%;
-            display: block;
-        }
-
-        /* Step Text */
-        .step-text {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .step-number {
-            font-size: 5rem;
-            font-weight: 900;
-            color: rgba(249, 74, 41, 0.1);
-            line-height: 1;
-            margin-bottom: -20px;
-            position: relative;
-            z-index: -1;
-        }
-
-        .step-text h3 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
-
-        .step-text p {
-            font-size: 1.1rem;
-            color: var(--light-text);
-            max-width: 400px;
-        }
-
-        /* Mobile */
-        @media (max-width: 991px) {
-            .process-path { display: none; }
-            .process-step { 
-                flex-direction: column !important; 
-                text-align: center !important;
-                gap: 30px;
-            }
-            .step-text { align-items: center !important; }
-            .step-card { flex: auto; width: 100%; max-width: 500px; }
-            .process-steps { gap: 60px; }
-        }
-
-        /* --- CTA --- */
-        .cta-ref {
-            background-color: #fff9f7; /* Very light orange tint */
-            padding: 120px 0;
-            text-align: center;
-        }
-
-        .cta-ref h2 {
-            font-size: 3rem;
-            margin-bottom: 30px;
-        }
-        
-        .input-group-custom {
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .input-group-custom input {
-            width: 100%;
-            padding: 20px 30px;
-            border-radius: 50px;
-            border: 1px solid #ddd;
-            outline: none;
-        }
-        
-        .input-group-custom button {
-            position: absolute;
-            right: 5px;
-            top: 5px;
-            bottom: 5px;
-            border-radius: 50px;
-            background: var(--dark-text);
-            color: #fff;
-            padding: 0 25px;
-            border: none;
-            font-weight: 600;
-        }
-
-        /* --- Floating Nav (Redesign) --- */
-        .page-wrapper {
-            padding-top: 0 !important; /* Override standard padding */
-        }
-        
-        .floating-nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 1200px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 15px 30px;
-            border-radius: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 1000;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            border: 1px solid rgba(255,255,255,0.5);
-            transition: all 0.3s ease;
-        }
-        
-        /* Sticky state could be handled by JS, but this fixed island works well always */
-        
-        .floating-nav .nav-logo img {
-            height: 40px;
-        }
-        
-        .floating-nav ul.nav-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 30px;
-        }
-        
-        .floating-nav ul.nav-links li a {
-            color: var(--dark-text);
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .floating-nav ul.nav-links li a:hover {
-            color: var(--primary-color);
-        }
-        
-        .floating-nav .nav-cta {
-            background: var(--dark-text);
-            color: #fff !important;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-        
-        .floating-nav .nav-cta:hover {
-            background: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        /* Mobile Menu Trigger (Simplified) */
-        .mobile-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        @media (max-width: 991px) {
-            .floating-nav ul.nav-links {
-                display: none; /* Hide links on mobile for now - simplified */
-            }
-            .mobile-toggle {
-                display: block;
-            }
-            .hero-ref {
-                padding-top: 140px; /* Adjust hero padding for nav */
-            }
-        }
-        /* --- Unique Contact Section (Vibrant Design) --- */
-        .unique-contact-section {
-            position: relative;
-            background: linear-gradient(135deg, #ff8c61 0%, #f94a29 100%);
-            padding: 100px 0;
-            overflow: hidden;
-            color: #fff;
-        }
-
-        /* Abstract Background Shapes (Subtle) */
-        .shape-circle-1 {
-            position: absolute;
-            top: -100px;
-            left: -100px;
-            width: 500px;
-            height: 500px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        .shape-circle-2 {
-            position: absolute;
-            bottom: -150px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .contact-card {
-            background: #fff;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.15); /* Softer, deeper shadow */
-            color: #333;
-            position: relative;
-            z-index: 10;
-        }
-
-        .contact-card h3 {
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: #222;
-        }
-
-        .form-label {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #555;
-            margin-bottom: 8px;
-            display: block;
-            margin-left: 5px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .contact-input {
-            width: 100%;
-            padding: 12px 20px;
-            border-radius: 10px;
-            border: 2px solid #edf2f7; /* Subtle border */
-            background: #f8f9fa;
-            box-shadow: none;
-            transition: all 0.3s;
-            font-size: 1rem;
-            color: #444;
-            font-weight: 500;
-        }
-
-        .contact-input:focus {
-            background: #fff;
-            border-color: var(--primary-color);
-            box-shadow: 0 5px 20px rgba(249, 74, 41, 0.15);
-            outline: none;
-        }
-        
-        .contact-input::placeholder {
-            color: #adb5bd;
-            font-weight: 400;
-        }
-        
-        select.contact-input {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F94A29' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 16px;
-        }
-
-        .icon-circle {
-            width: 32px;
-            height: 32px;
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-    </style>
+  gtag('config', 'AW-17866862528');
+</script>
 </head>
 
 <body>
@@ -718,13 +45,13 @@
         </div>
         
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#form">Contact</a></li>
         </ul>
 
-        <a href="contact.html" class="nav-cta">Get Started</a>
+        <a href="#form" class="nav-cta">Get Started</a>
         
         <div class="mobile-toggle">
             <i class="fa fa-bars"></i>
@@ -740,18 +67,26 @@
                 <div class="col-lg-6 mb-5 mb-lg-0 text-left">
                     <h1 class="font-weight-bold mb-3" style="font-size: 4.5rem; line-height: 1.1;">Website Development <br><span style="color: var(--primary-color);">Services</span></h1>
                     <h4 class="mb-3 mt-4" style="font-weight: 700; color: #333; font-size: 1.5rem;">Build a Website That Helps Your Business Grow</h4>
-                    <p class="mb-5" style="color: #666; font-size: 1.2rem; max-width: 550px; line-height: 1.6;">Your website should make it easy for customers to understand your services, trust your business and get in touch. At Smart Solutions, we build websites that are clear, fast, easy to use and focused on real business needs.</p>
+                    <!-- Hidden on mobile (d-none d-lg-block) -->
+                    <p class="d-none d-lg-block" style="color: #666; font-size: 1.2rem; ">Your website should make it easy for customers to understand your services, trust your business and get in touch. At Smart Solutions, we build websites that are clear, fast, easy to use and focused on real business needs.</p>
                     
                     <div class="btn-box d-flex align-items-center">
-                        <a href="contact.html" class="btn-custom" style="padding: 18px 45px; font-size: 1rem; border-radius: 50px;">Get Started</a>
-                        <a href="#services" class="btn-custom-outline ml-3" style="padding: 18px 45px; color: #333; border-color: #ddd; font-size: 1rem; border-radius: 50px;">Our Services</a>
+                        <a href="#form" class="btn-custom" style="padding: 18px 45px; font-size: 1rem; border-radius: 50px;">Get Started</a>
+                       
                     </div>
                 </div>
                 
-                <!-- Image Column -->
-                <div class="col-lg-6 text-center">
+                <!-- Image Column (Hidden on mobile as it becomes background) -->
+                <div class="col-lg-6 text-center d-none d-lg-block">
                     <div class="hero-image-wrapper">
-                        <img src="assets/images/generated/hero_main_v3.png" alt="Smart Solutions Ecosystem" class="img-fluid hero-main-img">
+                        <img src="assets/images/web-dev-hero.png" alt="Smart Solutions Ecosystem" class="img-fluid hero-main-img">
+                        <!-- Floating Icons -->
+                        <div class="floating-icon icon-node"><i class="fa-brands fa-node"></i></div>
+                        <div class="floating-icon icon-js"><i class="fa-brands fa-js"></i></div>
+                        <div class="floating-icon icon-html"><i class="fa-brands fa-html5"></i></div>
+                        <div class="floating-icon icon-react"><i class="fa-brands fa-react"></i></div>
+                        <div class="floating-icon icon-css"><i class="fa-brands fa-css3-alt"></i></div>
+                        <div class="floating-icon icon-bootstrap"><i class="fa-brands fa-bootstrap"></i></div>
                     </div>
                 </div>
             </div>
@@ -761,14 +96,14 @@
     <!-- Services Grid -->
     <section id="services" class="ecosystems-section">
         <div class="auto-container">
-            <div class="section-header-ref">
-                <h2>Our Website Development Services</h2>
+            <div class="section-header-ref" id="services">
+                <h2>Our Website <span style="color: var(--primary-color);">Development Services</span></h2>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="eco-card">
                         <img src="assets/images/generated/service_real_1.png" alt="Custom Websites">
-                        <div class="content">
+                        <div class="content text-center">
                             <h4>Custom Business Websites</h4>
                             <p class="text-muted">Tailored solutions matching your specific goals.</p>
                         </div>
@@ -776,8 +111,8 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="eco-card">
-                        <img src="assets/images/generated/service_real_2.png" alt="E-commerce">
-                        <div class="content">
+                        <img src="assets/images/real_service.png" alt="E-commerce">
+                        <div class="content text-center">
                             <h4>E-commerce Websites</h4>
                             <p class="text-muted">Online stores to sell your products effectively.</p>
                         </div>
@@ -786,7 +121,7 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="eco-card">
                         <img src="assets/images/generated/mobile_app_dev.png" alt="Landing Pages">
-                        <div class="content">
+                        <div class="content text-center">
                             <h4>Landing Pages & Redesigns</h4>
                             <p class="text-muted">Marketing campaigns and performance improvements.</p>
                         </div>
@@ -820,11 +155,11 @@
     <!-- Why Choose Us Section (Accordion Redesign) -->
     <!-- Why Choose Us Section (New 3D Grid Redesign) -->
     <!-- Why Choose Us Section (Bento Grid Redesign) -->
-    <section class="why-choose-section" style="background: #fbfbfb; padding: 120px 0;">
+    <section class="why-choose-section" id="about" style="background: #fbfbfb; padding: 20px 0;">
         <div class="auto-container">
             <div class="row mb-5">
                 <div class="col-12 text-center">
-                    <h2 class="font-weight-bold" style="font-size: 3rem; margin-bottom: 15px; letter-spacing: -1px;">Why Choose <span style="color: var(--primary-color);">Smart Solutions?</span></h2>
+                    <h2 class="font-weight-bold" style="font-size: 2.5rem; margin-bottom: 15px; letter-spacing: -1px;">Why Choose <span style="color: var(--primary-color);">Smart Solutions?</span></h2>
                     <p class="text-muted" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">We combine cutting-edge technology and human-centric design to build websites that work harder for your business.</p>
                 </div>
             </div>
@@ -897,18 +232,19 @@
     <!-- Execution (Process) Unique Flow -->
     <section class="process-unique">
         <!-- Background SVG Line for Flow -->
-        <svg class="process-line-container" viewBox="0 0 800 600">
-            <path class="process-path" d="M100,50 C200,50 300,150 400,150 S600,250 700,250 S600,450 400,450 S200,550 100,550" />
+        <svg class="process-line-container" viewBox="0 0 800 1600">
+            <!-- Path weaves: Center -> Right (Step 1) -> Left (Step 2) -> Right (Step 3) -> Center -->
+            <path class="process-path" d="M 400 0 Q 700 200 700 400 C 700 600 100 800 100 1000 C 100 1200 700 1300 700 1450" />
         </svg>
 
         <div class="auto-container">
-            <h2>How We Build Your Website</h2>
+            <h2>How We Build <span style="color: var(--primary-color);">Your Website</span></h2>
             
             <div class="process-steps">
                 <!-- Step 1 -->
                 <div class="process-step">
                     <div class="step-card">
-                        <img src="assets/images/generated/custom_ui_design.png" alt="Plan">
+                        <img src="assets/images/generated/Plan.png" alt="Plan">
                     </div>
                     <div class="step-text">
                         <div class="step-number">01</div>
@@ -932,7 +268,7 @@
                 <!-- Step 3 -->
                 <div class="process-step">
                     <div class="step-card">
-                        <img src="assets/images/generated/ecommerce_dashboard.png" alt="Launch">
+                        <img src="assets/images/generated/Launch.png" alt="Launch">
                     </div>
                     <div class="step-text">
                         <div class="step-number">03</div>
@@ -954,16 +290,16 @@
             <div class="row align-items-center">
                 <!-- Text Column -->
                 <div class="col-lg-5 mb-5 mb-lg-0 text-white">
-                    <h2 class="display-4 font-weight-bold mb-4">Ready to Scale Your Business?</h2>
-                    <p class="lead mb-5" style="opacity: 0.9;">Let's build a website that not only looks amazing but drives real growth. Schedule your consultation today.</p>
+                    <h2 class="font-weight-bold mb-4" style="font-family: 'Inter', sans-serif; font-size: 2.5rem;" id="form">Ready to Scale Your Business?</h2>
+                    <p class="mb-5" style="opacity: 0.9; color: black;">Let's build a website that not only looks amazing but drives real growth. Schedule your consultation today.</p>
                     
                     <div class="feature-list">
                         <div class="d-flex align-items-center mb-3">
-                            <div class="icon-circle mr-3"><i class="fa-solid fa-check"></i></div>
+                            <div class="icon-circle"><i class="fa-solid fa-check"></i></div>
                             <span>Free Initial Consultation</span>
                         </div>
                         <div class="d-flex align-items-center mb-3">
-                            <div class="icon-circle mr-3"><i class="fa-solid fa-check"></i></div>
+                            <div class="icon-circle"><i class="fa-solid fa-check"></i></div>
                             <span>Timeline & Cost Estimate</span>
                         </div>
                         <div class="d-flex align-items-center">
@@ -977,7 +313,7 @@
                 <div class="col-lg-6 offset-lg-1">
                     <div class="contact-card">
                         <h3 class="mb-4 text-dark">Get a Quote</h3>
-                        <form action="#" method="POST">
+                        <form action="send_web_dev_mail.php"  method="POST">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Name</label>
@@ -1114,6 +450,143 @@
 <script src="assets/js/mixitup.js"></script>
 <script src="assets/js/script.js"></script>
 <script src="assets/js/jquery.js"></script>
+
+    <!-- Typing Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const list = document.querySelector('.feature-list-ref');
+            if (!list) return;
+
+            const items = list.querySelectorAll('li');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3
+            };
+
+            // Prepare items: clear text, store it in data attribute
+            items.forEach(item => {
+                // Find the text node (ignoring the icon)
+                let textNode;
+                for (let i = 0; i < item.childNodes.length; i++) {
+                    if (item.childNodes[i].nodeType === Node.TEXT_NODE && item.childNodes[i].textContent.trim().length > 0) {
+                        textNode = item.childNodes[i];
+                        break;
+                    }
+                }
+
+                if (textNode) {
+                    const originalText = textNode.textContent;
+                    const span = document.createElement('span');
+                    span.className = 'typing-text';
+                    span.dataset.text = originalText.trim(); // Store text
+                    span.textContent = ''; // Clear initial
+                    
+                    // Replace text node with the span
+                    item.replaceChild(span, textNode);
+                }
+            });
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startTypingSequence(items);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            observer.observe(list);
+
+            function startTypingSequence(items) {
+                let lineIndex = 0;
+
+                function typeLine() {
+                    if (lineIndex >= items.length) return;
+
+                    const item = items[lineIndex];
+                    const span = item.querySelector('.typing-text');
+                    
+                    if (!span) {
+                        lineIndex++;
+                        typeLine();
+                        return;
+                    }
+
+                    const text = span.dataset.text;
+                    let charIndex = 0;
+                    
+                    // Add cursor class
+                    span.classList.add('cursor-active');
+
+                    function typeChar() {
+                        if (charIndex < text.length) {
+                            span.textContent += text.charAt(charIndex);
+                            charIndex++;
+                            setTimeout(typeChar, 30); // Typing speed
+                        } else {
+                            // Line finished
+                            span.classList.remove('cursor-active');
+                            lineIndex++;
+                            setTimeout(typeLine, 200); // Delay before next line
+                        }
+                    }
+
+                    typeChar();
+                }
+
+                typeLine();
+            }
+        });
+    </script>
+
+    <style>
+        /* Typing cursor effect */
+        .typing-text.cursor-active::after {
+            content: '|';
+            display: inline-block;
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
+            color: var(--primary-color);
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+    <!-- Bento Grid Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bentoCards = document.querySelectorAll('.bento-card');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Trigger earlier
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Add delay based on index for staggered effect
+                        const card = entry.target;
+                        const index = Array.from(bentoCards).indexOf(card);
+                        setTimeout(() => {
+                            card.classList.add('bento-visible');
+                        }, index * 100); // 100ms stagger
+                        
+                        observer.unobserve(card);
+                    }
+                });
+            }, observerOptions);
+
+            bentoCards.forEach(card => {
+                card.classList.add('bento-hidden'); // Initialize hidden state
+                observer.observe(card);
+            });
+        });
+    </script>
+    
 
 </body>
 </html>
