@@ -399,92 +399,166 @@
         
         .float-pill {
             position: absolute;
-            background: white;
-            padding: 10px 20px 10px 10px;
-            border-radius: 50px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background: none; /* No background */
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none; /* No shadow on container */
+            border: none;
             display: flex;
+            flex-direction: column; /* Vertical layout */
             align-items: center;
-            gap: 12px;
+            gap: 8px; /* Distinct gap */
             z-index: 3;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #333;
-            white-space: nowrap;
             animation: float-pill 4s ease-in-out infinite;
         }
+        .float-pill:hover {
+            transform: translateY(-5px);
+            background: none;
+            cursor: pointer;
+        }
+        .float-pill span {
+            background: white; /* Small label background for readability */
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
         .float-pill .icon-box {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
+            width: 55px; /* Slightly larger icon */
+            height: 55px;
+            border-radius: 18px; /* Soft square */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
+            font-size: 1.4rem;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
         }
+        .float-pill:hover .icon-box {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        /* Gradient Icons */
         .float-pill .red-icon {
-            background: #fff0eb;
-            color: var(--primary-color);
+            background: linear-gradient(135deg, #ff9a9e 0%, var(--primary-color) 100%);
         }
         .float-pill .blue-icon {
-            background: #e1f5fe;
-            color: #03a9f4;
+            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+        }
+        .float-pill .green-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #43e97b 100%); /* Green-Blue Gradient */
+        }
+        .float-pill .purple-icon {
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); /* Purple-Pink Gradient */
         }
         
         /* Specific Positions */
-        .card-left {
-            top: 20%;
-            left: 0;
-            transform: translateX(-20%);
-            animation-delay: 0s;
-        }
-        .card-top-right {
-            top: 30%;
-            right: 0;
-            transform: translateX(10%);
-            animation-delay: 1.5s;
-        }
-        .card-bottom-right {
-            bottom: 20%;
-            right: 20px;
-            animation-delay: 1s;
-        }
+        .card-left { top: 40%; left: -30px; animation-delay: 0s; } /* Red */
+        .card-top-right { top: 10%; right: 0px; animation-delay: 1.5s; } /* Blue 1 */
+        .card-bottom-right { bottom: 20%; right: -10px; animation-delay: 0.8s; } /* Blue 2 */
+        .card-pos-4 { top: 5%; left: 20px; animation-delay: 2.2s; } /* Purple */
+        .card-pos-5 { bottom: 15%; left: -20px; animation-delay: 3s; } /* Green */
         
         @keyframes float-pill {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
 
-        /* 2. Growth Features Grid */
-        .growth-features-section {
-            padding: 80px 0;
-            background: #fff;
+        /* 2. Growth Features - Unique Dark Design */
+        .growth-features-dark {
+            padding: 120px 0;
+            background: #0f172a; /* Dark Navy */
+            position: relative;
+            overflow: hidden;
         }
-        .feature-box-modern {
-            background: #fff;
-            padding: 40px 30px;
+        /* Background decorative glow */
+        .growth-features-dark::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(249, 74, 41, 0.1) 0%, rgba(15, 23, 42, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .gradient-text-orange {
+            background: linear-gradient(to right, #ff7e5f, var(--primary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .feature-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-card-dark {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px;
             border-radius: 20px;
-            border: 1px solid #f0f0f0;
-            transition: all 0.3s;
-            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
-        .feature-box-modern:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            border-color: transparent;
+        
+        .feature-card-dark:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(249, 74, 41, 0.3);
+            transform: translateX(10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
-        .feature-box-modern .icon-circle {
-            width: 60px;
+        
+        .icon-box-glow {
+            min-width: 60px;
             height: 60px;
-            background: #fff0eb;
-            color: var(--primary-color);
+            background: rgba(249, 74, 41, 0.1);
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            margin-bottom: 25px;
+            color: var(--primary-color);
+            transition: all 0.3s;
         }
+        
+        .feature-card-dark:hover .icon-box-glow {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 0 20px rgba(249, 74, 41, 0.4);
+        }
+        
+        .feature-card-dark .text h4 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card-dark .text p {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Utility for Text */
+        .text-white { color: #fff !important; }
+        .text-white-50 { color: rgba(255,255,255,0.6) !important; }
         .feature-box-modern h4 {
             font-weight: 700;
             margin-bottom: 15px;
@@ -494,37 +568,78 @@
             margin: 0;
         }
         
-        /* 3. Approach Grid */
+        /* 3. Approach (Timeline Style) */
+        .approach-section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
         .approach-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 60px;
+            position: relative;
+        }
+        .approach-grid::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: #eee;
+            z-index: 0;
         }
         .approach-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 4px solid var(--primary-color);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            transition: 0.3s;
+            background: transparent;
+            padding: 20px;
+            border: none;
+            box-shadow: none;
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
         .approach-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            box-shadow: none;
         }
         .step-num {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #f0f0f0;
-            line-height: 1;
-            display: block;
-            margin-bottom: -15px;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: white;
+            border: 2px solid #eee;
+            color: #ccc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+        .approach-card:hover .step-num {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 10px 25px rgba(249, 74, 41, 0.3);
         }
         .approach-card h5 {
-            font-weight: 700;
-            margin-bottom: 10px;
-            position: relative;
+            font-weight: 800;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        @media (max-width: 991px) {
+            .approach-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .approach-grid::before {
+                display: none;
+            }
         }
 
         /* 4. Who For Section */
@@ -589,54 +704,90 @@
             z-index: 0;
         }
 
-        /* 6. Pre-Footer Modern */
+        /* 6. Pre-Footer Modern - Redesign */
+        .pre-footer-cta-modern {
+            padding: 80px 0;
+            background: #f8fafc; /* Light section bg to make the dark card pop */
+        }
         .cta-box-gradient {
-            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
-            border-radius: 30px;
-            padding: 60px;
-            position: relative;
-            overflow: hidden;
+            /* Styles moved to inline CSS block for specificity override */
+        }
+        /* Decorative circles */
+        .cta-box-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            pointer-events: none;
         }
         .cta-box-gradient::after {
             content: '';
             position: absolute;
-            top: -50px;
+            bottom: -50px;
             right: -50px;
-            width: 200px;
-            height: 200px;
-            background: var(--primary-color);
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
             border-radius: 50%;
-            opacity: 0.2;
-            filter: blur(50px);
+            pointer-events: none;
         }
-        .btn-white {
-            background: white;
-            color: #1a1a1a;
-            padding: 15px 35px;
+        
+        .cta-box-gradient h3 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .cta-box-gradient p {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .btn-dark-pill {
+            background: #0f172a; /* Dark Navy contrast */
+            color: white;
+            padding: 18px 40px;
             border-radius: 50px;
             font-weight: 700;
             text-decoration: none;
-            transition: 0.3s;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            border: 2px solid transparent;
         }
-        .btn-white:hover {
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-        }
-        .btn-outline-white {
-            border: 2px solid rgba(255,255,255,0.3);
-            color: white;
-            padding: 13px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .btn-outline-white:hover {
-            border-color: white;
+        .btn-dark-pill:hover {
+            transform: translateY(-5px);
             background: white;
-            color: #1a1a1a;
+            color: var(--primary-color);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
             text-decoration: none;
+        }
+        
+        .btn-outline-light-pill {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+        .btn-outline-light-pill:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-5px);
+            text-decoration: none;
+            border-color: white;
         }
 
         @media (max-width: 991px) {
@@ -684,9 +835,8 @@
                 <div class="col-lg-6">
                     <div class="hero-content">
                         <h1>
-                            <span style="color: var(--primary-color);">SEO Services</span> 
-                            <span style="color: #1a1a1a;">By</span><br>
-                            Smart Solutions
+                            <span style="color: #1a1a1a;">SEO Services By</span><br>
+                            <span style="color: var(--primary-color);">Smart Solutions</span>
                         </h1>
                         <p class="hero-desc">We help businesses become visible where it matters, attract high-intent traffic, and turn website visits into real growth.</p>
                         <div class="btn-group-custom">
@@ -707,7 +857,7 @@
                             <div class="icon-box red-icon">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
-                            <span>Keyword Research</span>
+                            <span>On page SEO</span>
                         </div>
 
                         <!-- Floating Card 2: Top Right -->
@@ -725,50 +875,148 @@
                             </div>
                             <span>Technical SEO</span>
                         </div>
+                        
+                        <!-- Floating Card 4: Top Left (New) -->
+                        <div class="float-pill card-pos-4">
+                            <div class="icon-box purple-icon">
+                                <i class="fa-solid fa-link"></i>
+                            </div>
+                            <span>Link Building</span>
+                        </div>
+
+                        <!-- Floating Card 5: Bottom Left (New) -->
+                        <div class="float-pill card-pos-5">
+                            <div class="icon-box green-icon">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <span>Competitor Analysis</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 1: Real Business Growth (Feature Grid) -->
-    <section class="growth-features-section" id="about">
+
+    <!-- SECTION 1: Real Business Growth (Light Theme Match) -->
+    <section class="growth-features-light" id="about" style="background: #ffffff; padding: 100px 0 50px;">
         <div class="auto-container">
-            <div class="row mb-5 justify-content-center text-center">
-                <div class="col-lg-8">
-                    <h2>SEO That Supports <span style="color:var(--primary-color);">Real Business Growth</span></h2>
-                    <p class="mt-3 text-muted">SEO is not about chasing rankings for the sake of it. It is about positioning your business in front of the right audience at the right time and converting that visibility into meaningful enquiries and long-term growth.</p>
+            <div class="row align-items-center">
+                <!-- Left: Content & CTA -->
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="growth-content-sticky">
+                        <h2 class="mb-4 text-dark" style="font-size: 3rem; font-weight: 800; line-height: 1.2;">
+                            SEO That Supports <br>
+                            <span style="color: var(--primary-color);">Real Business Growth</span>
+                        </h2>
+                        <p class="text-muted mb-4" style="font-size: 1.05rem; line-height: 1.8;">
+                           SEO is not about chasing rankings for the sake of it. It is about positioning your business in front of the right
+audience at the right time and converting that visibility into meaningful enquiries and long-term growth. The
+focus is on strengthening online presence so websites consistently attract users actively searching for
+relevant services
+                        </p>
+                        <a href="#form" class="btn-theme-gradient" style="box-shadow: 0 10px 25px rgba(249, 74, 41, 0.4);">Get A Free SEO Consultation</a>
+                    </div>
+                </div>
+                
+                <!-- Right: 3 Floating Cards -->
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="growth-cards-stack">
+                        <!-- Card 1 -->
+                        <div class="growth-card-light">
+                            <div class="icon-box-light-red">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <div class="text">
+                                <h5>Relevant Searches</h5>
+                                <p>Appear exactly when customers are searching for your services.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 2 -->
+                        <div class="growth-card-light">
+                            <div class="icon-box-light-red">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+                            <div class="text">
+                                <h5>Genuine Intent</h5>
+                                <p>Connect with users actively ready to purchase or inquire.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 3 -->
+                        <div class="growth-card-light">
+                            <div class="icon-box-light-red">
+                                <i class="fa-solid fa-ranking-star"></i>
+                            </div>
+                            <div class="text">
+                                <h5>Long-Term Credibility</h5>
+                                <p>Build a trusted reputation that keeps paying dividends over time.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="row">
-                <!-- Feature 1 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="feature-box-modern">
-                        <div class="icon-circle"><i class="fa-solid fa-magnifying-glass"></i></div>
-                        <h4>Relevant Searches</h4>
-                        <p>Appear exactly when customers search for your services.</p>
-                    </div>
-                </div>
-                <!-- Feature 2 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="feature-box-modern">
-                        <div class="icon-circle"><i class="fa-solid fa-users-viewfinder"></i></div>
-                        <h4>Genuine Intent</h4>
-                        <p>Attract visitors who are actually ready to buy.</p>
-                    </div>
-                </div>
-                <!-- Feature 3 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="feature-box-modern">
-                        <div class="icon-circle"><i class="fa-solid fa-medal"></i></div>
-                        <h4>Long-term Credibility</h4>
-                        <p>Build trust and authority in your industry.</p>
-                    </div>
-                </div>
+            
+            <!-- Bottom: How SEO Helps (Rounded Card) -->
+            <div class="how-seo-helps-card mt-5" style="background: #fff9f9; border-radius: 40px; padding: 80px 40px; text-align: center; margin-top: 80px !important;">
+                 <div class="row justify-content-center">
+                     <div class="col-lg-9">
+                         <h2 class="mb-4" style="font-size: 2.5rem; color: #1a1a1a; font-weight: 800;">
+                             How SEO <span style="color: var(--primary-color);">helps your business</span>
+                         </h2>
+                         <p class="text-muted mx-auto" style="font-size: 1.1rem; line-height: 1.8;">
+                             A well-executed SEO strategy helps businesses appear for relevant searches, attract users with genuine
+intent, improve lead quality, build long-term credibility, and reduce dependency on paid advertising by
+connecting businesses with customers at the right moment.
+                         </p>
+                     </div>
+                 </div>
             </div>
+            
         </div>
     </section>
+
+    <style>
+        .growth-card-light {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            border: 1px solid #f0f0f0;
+            transition: transform 0.3s ease;
+        }
+        .growth-card-light:hover {
+            transform: translateY(-5px);
+        }
+        .icon-box-light-red {
+            width: 50px;
+            height: 50px;
+            background: #fff5f2;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        .growth-card-light .text h5 {
+            margin: 0 0 5px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        .growth-card-light .text p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
 
     <!-- SECTION 2: Our SEO Approach (Clean Cards) -->
     <section class="approach-section" style="background: #f9f9f9;">
@@ -776,7 +1024,7 @@
             <div class="section-header-left row align-items-end mb-5">
                 <div class="col-lg-6">
                     <h2>Our SEO <span style="color:var(--primary-color);">Approach</span></h2>
-                    <p class="text-muted">SEO services built around business objectives rather than generic tactics.</p>
+                    <p class="text-muted">SEO services are built around business objectives rather than generic tactics. The approach focuses on improving search visibility, strengthening website structure and performance, aligning content with user intent, driving consistent organic traffic, and building long-term online authority.</p>
                 </div>
                 <div class="col-lg-6 text-lg-right">
                     <a href="#form" class="btn-custom">Talk to an SEO Expert</a>
@@ -813,11 +1061,8 @@
         <div class="auto-container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                     <div class="image-stack">
-                         <!-- Use a generated generic image or abstract shape here if no specific image -->
-                         <div class="p-5 bg-light rounded-lg text-center">
-                             <img src="assets/images/generated/icon_3d_mobile.png" alt="Growth" style="max-width:200px;">
-                         </div>
+                     <div class="image-stack text-center">
+                         <img src="assets/images/generated/isometric_seo_growth.png" alt="SEO Growth" class="img-fluid" style="max-height: 400px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));">
                      </div>
                 </div>
                 <div class="col-lg-6 pl-lg-5">
@@ -833,44 +1078,302 @@
         </div>
     </section>
 
-    <!-- SECTION 4: Long-Term Growth (Graph Visual) -->
-    <section class="growth-chart-section text-center">
-        <div class="auto-container">
-            <h2 class="mb-4">SEO as a <span style="color: var(--primary-color);">Long-Term Growth Channel</span></h2>
-            <p class="text-muted mx-auto mb-5" style="max-width: 700px;">SEO is an ongoing process that builds momentum over time. When implemented correctly, it becomes a reliable channel that delivers traffic, trust, and business growth well beyond the initial phase.</p>
+    <!-- SECTION 4: Long-Term Growth (Orbital Ecosystem) -->
+    <section class="growth-orbital-section" style="background: linear-gradient(180deg, #ffffff 0%, #fff7f2 100%); padding: 100px 0; overflow: hidden;">
+        <div class="auto-container text-center">
+            <h2 class="mb-4" style="font-size: 2.8rem; letter-spacing: -1px; color: #1a1a1a;">SEO as a <span style="color: var(--primary-color);">Long-Term Growth Ecosystem</span></h2>
+            <p class="text-muted mx-auto mb-5" style="max-width: 750px; font-size: 1.15rem;">SEO isn't linear—it's an ongoing cycle of optimization. When implemented correctly, it builds a self-sustaining ecosystem of traffic, authority, and revenue.</p>
             
-            <div class="chart-visual-placeholder">
-                <div class="chart-bar bar-1"></div>
-                <div class="chart-bar bar-2"></div>
-                <div class="chart-bar bar-3"></div>
-                <div class="chart-bar bar-4"></div>
-                <div class="chart-bar bar-5"></div>
-                <div class="chart-line"></div>
+            <div class="orbital-system-wrapper">
+                <!-- Center Core -->
+                <div class="orbit-core">
+                    <div class="core-text">
+                        <span style="font-size: 1.2rem; display: block; margin-bottom: 5px;">Your</span>
+                        <span style="font-size: 1.8rem; font-weight: 800; color: white;">GROWTH</span>
+                    </div>
+                    <div class="core-glow"></div>
+                </div>
+                
+                <!-- Ring 1: Momentum -->
+                <div class="orbit-ring ring-1">
+                    <div class="orbit-planet planet-1">
+                        <div class="planet-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <div class="planet-label">Momentum</div>
+                    </div>
+                </div>
+                
+                <!-- Ring 2: Authority -->
+                <div class="orbit-ring ring-2">
+                    <div class="orbit-planet planet-2">
+                        <div class="planet-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="planet-label">Authority</div>
+                    </div>
+                </div>
+                 
+                 <!-- Ring 3: Revenue -->
+                <div class="orbit-ring ring-3">
+                    <div class="orbit-planet planet-3">
+                        <div class="planet-icon"><i class="fa-solid fa-crown"></i></div>
+                        <div class="planet-label">Dominance</div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="mt-5">
-                <a href="#form" class="btn-custom">Start Your SEO Growth Journey</a>
-            </div>
+
+            <a href="#form" class="btn-theme-orange mt-5" style="width: auto; padding: 18px 50px; border-radius: 50px; box-shadow: 0 10px 30px rgba(249, 74, 41, 0.3); position: relative; z-index: 10;">Start Your Growth Engine</a>
         </div>
     </section>
 
+    <style>
+        .orbital-system-wrapper {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        @media(max-width: 767px) {
+            .orbital-system-wrapper { width: 350px; height: 350px; }
+        }
+        
+        /* Core */
+        .orbit-core {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, var(--primary-color), #ff9a9e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            box-shadow: 0 0 60px rgba(249, 74, 41, 0.4);
+        }
+        .core-text {
+            color: white;
+            line-height: 1;
+            text-align: center;
+        }
+        .core-glow {
+            position: absolute;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            border: 2px solid white;
+            opacity: 0.3;
+            animation: pulseCore 3s infinite;
+        }
+        @keyframes pulseCore {
+            0% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0; }
+            100% { transform: scale(1); opacity: 0.3; }
+        }
+        
+        /* Rings */
+        .orbit-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(249, 74, 41, 0.2);
+            border-radius: 50%;
+        }
+        .ring-1 { width: 300px; height: 300px; animation: spinRight 20s linear infinite; }
+        .ring-2 { width: 450px; height: 450px; animation: spinLeft 30s linear infinite; }
+        .ring-3 { width: 580px; height: 580px; animation: spinRight 40s linear infinite; }
+        
+        @media(max-width: 767px) {
+            .ring-1 { width: 220px; height: 220px; }
+            .ring-2 { width: 280px; height: 280px; }
+            .ring-3 { width: 340px; height: 340px; }
+        }
+        
+        @keyframes spinRight { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+        @keyframes spinLeft { from { transform: translate(-50%, -50%) rotate(360deg); } to { transform: translate(-50%, -50%) rotate(0deg); } }
+        
+        /* Planets (Icons) */
+        .orbit-planet {
+            position: absolute;
+            top: 50%;
+            left: 100%; 
+            margin-top: -30px; 
+            margin-left: -30px;
+        }
+        .planet-1 { animation: counterRotate 20s linear infinite; }
+        .planet-2 { animation: counterRotateReverse 30s linear infinite; }
+        .planet-3 { animation: counterRotate 40s linear infinite; }
+        
+        @keyframes counterRotate { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+        @keyframes counterRotateReverse { from { transform: rotate(-360deg); } to { transform: rotate(0deg); } }
+
+        .planet-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary-color);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 2px solid #fff5f2;
+        }
+        .planet-label {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+    </style>
+
     <!-- SECTION 5: Pre-Footer CTA -->
-    <section class="pre-footer-cta-modern">
+
+
+    <!-- SECTION 5: Pre-Footer CTA (Light V2) -->
+    <section class="pre-footer-cta-light" id="form">
         <div class="auto-container">
-            <div class="cta-box-gradient">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 text-white">
-                        <h3>Let’s Improve Your Online Visibility</h3>
-                        <p class="mb-0 text-white-50">Reach the right audience, generate quality enquiries, and grow organically.</p>
-                    </div>
-                    <div class="col-lg-5 text-lg-right mt-4 mt-lg-0">
-                         <a href="#form" class="btn-white">Request SEO Audit</a>
-                         <a href="#form" class="btn-outline-white ml-2">Schedule Consultation</a>
-                    </div>
+            <div class="row align-items-center">
+                <!-- Left Content -->
+                <div class="col-lg-6 light-theme-content">
+                    <span style="color: var(--primary-color); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">Grow Your Business</span>
+                    <h3>Let’s Improve Your <br><span style="color:var(--primary-color);">Online Visibility</span></h3>
+                    <p>Stop losing customers to competitors who rank higher than you. Our SEO strategies are designed to bring qualified traffic, generate leads, and build long-term authority.</p>
+                    
+                    <ul class="feature-list-red mt-4">
+                        <li><i class="fa-solid fa-check icon-wrapper"></i> <strong>Free Website Audit</strong> included</li>
+                        <li><i class="fa-solid fa-check icon-wrapper"></i> <strong>Competitor Analysis</strong> report</li>
+                    </ul>
+                </div>
+                
+                <!-- Right Form -->
+                <div class="col-lg-5 offset-lg-1">
+                     <div class="light-form-card">
+                         <h4 class="mb-4 text-center">Get Your Free Strategy</h4>
+                         <form action="send_web_dev_mail.php" method="POST">
+                             <input type="hidden" name="service" value="SEO Services Light Theme">
+                             <div class="row">
+                                 <div class="col-md-12 form-group">
+                                     <input type="text" name="name" required placeholder="Full Name" class="form-control-light">
+                                 </div>
+                                 <div class="col-md-12 form-group">
+                                     <input type="email" name="email" required placeholder="Email Address" class="form-control-light">
+                                 </div>
+                                 <div class="col-md-12 form-group">
+                                     <input type="tel" name="phone" required placeholder="Phone Number" class="form-control-light">
+                                 </div>
+                                 <div class="col-12 form-group">
+                                     <textarea name="message" rows="3" placeholder="Website URL or Message" class="form-control-light"></textarea>
+                                 </div>
+                                 <div class="col-12 mt-2">
+                                     <button type="submit" class="btn-theme-orange">Claim Free Audit</button>
+                                 </div>
+                             </div>
+                         </form>
+                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <style>
+        .text-left { text-align: left !important; }
+        
+        /* Modern Light Theme Pre-Footer */
+        .pre-footer-cta-light {
+            padding: 100px 0;
+            background: linear-gradient(to right, #fff5f2, #ffffff); /* Soft Orange Mesh */
+            position: relative;
+        }
+        
+        .light-theme-content h3 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        .light-theme-content p {
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .light-form-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05); /* Clean Shadow */
+            border-top: 5px solid var(--primary-color); /* Orange Accent */
+        }
+        
+        .light-form-card .form-group {
+            margin-bottom: 25px; /* Increased spacing between fields */
+        }
+        
+        .form-control-light {
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            color: #333;
+            border-radius: 8px;
+            padding: 15px 20px;
+            width: 100%;
+            height: auto;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .form-control-light:focus {
+            background: #fff;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(249, 74, 41, 0.1);
+            outline: none;
+        }
+        
+        /* Theme Button */
+        .btn-theme-orange {
+            background: var(--primary-color);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 8px;
+            font-weight: 700;
+            width: 100%;
+            border: none;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(249, 74, 41, 0.2);
+        }
+        .btn-theme-orange:hover {
+            background: #e04325;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(249, 74, 41, 0.3);
+            color: white;
+        }
+
+        /* Gradient Button for Features */
+        .btn-theme-gradient {
+            background: linear-gradient(135deg, #ff9a9e 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            border: none;
+            transition: all 0.3s;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(249, 74, 41, 0.2);
+        }
+        .btn-theme-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(249, 74, 41, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+    </style>
 
     <!-- Unique Contact Section REMOVED to match image -->
 
