@@ -568,78 +568,77 @@
             margin: 0;
         }
         
-        /* 3. Approach (Timeline Style) */
-        .approach-section {
+        /* 3. Approach (Split Layout) */
+        .approach-section-split {
             padding: 100px 0;
-            position: relative;
-            overflow: hidden;
+            background: #fafafa;
         }
-        .approach-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 60px;
-            position: relative;
+
+        .approach-content-left h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #1a1a1a;
         }
-        .approach-grid::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 50px;
-            right: 50px;
-            height: 2px;
-            background: #eee;
-            z-index: 0;
+
+        .approach-content-left p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #555;
         }
-        .approach-card {
-            background: transparent;
-            padding: 20px;
-            border: none;
-            box-shadow: none;
-            text-align: center;
-            position: relative;
-            z-index: 1;
+
+        .approach-card-simple {
+            background: #fff;
+            padding: 35px 30px;
+            border-radius: 12px;
+            height: 100%;
+            border: 1px solid #eee;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
         }
-        .approach-card:hover {
+
+        .approach-card-simple:hover {
             transform: translateY(-5px);
-            box-shadow: none;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border-color: rgba(249, 74, 41, 0.1);
         }
-        .step-num {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 30px;
-            background: white;
-            border: 2px solid #eee;
-            color: #ccc;
+
+        .icon-circle-simple {
+            width: 60px;
+            height: 60px;
+            background: #fff1ed;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
             transition: all 0.3s;
-            position: relative;
-            z-index: 2;
         }
-        .approach-card:hover .step-num {
-            border-color: var(--primary-color);
+
+        .approach-card-simple:hover .icon-circle-simple {
             background: var(--primary-color);
-            color: white;
-            box-shadow: 0 10px 25px rgba(249, 74, 41, 0.3);
+            color: #fff;
         }
-        .approach-card h5 {
-            font-weight: 800;
+
+        .approach-card-simple h5 {
+            font-size: 1.25rem;
+            font-weight: 700;
             margin-bottom: 15px;
-            font-size: 1.2rem;
+            color: var(--primary-color); /* Per reference image styling style */
         }
-        @media (max-width: 991px) {
-            .approach-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .approach-grid::before {
-                display: none;
-            }
+        
+        /* Override primary font color for title to match the reddish brand color in reference */
+        .approach-card-simple h5 {
+            color: #F94A29; 
+        }
+
+        .approach-card-simple p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 0;
         }
 
         /* 4. Who For Section */
@@ -846,11 +845,8 @@
                 </div>
                 <div class="col-lg-6 text-center position-relative">
                     <div class="hero-visual-ref">
-                        <!-- Orange Circle Background -->
-                       
-                        
                         <!-- Main Person Image -->
-                        <img src="assets/images/hero_person_v4.png" alt="SEO Expert" class="hero-person-img">
+                        <img src="assets/images/hero_person_v11.png" alt="SEO Expert" class="hero-person-img">
                         
                         <!-- Floating Card 1: Left -->
                         <div class="float-pill card-left">
@@ -861,20 +857,10 @@
                         </div>
 
                         <!-- Floating Card 2: Top Right -->
-                        <div class="float-pill card-top-right">
-                            <div class="icon-box blue-icon">
-                                <i class="fa-solid fa-magnifying-glass-chart"></i>
-                            </div>
-                            <span>Keyword Research</span>
-                        </div>
+                        
 
                         <!-- Floating Card 3: Bottom Right -->
-                        <div class="float-pill card-bottom-right">
-                            <div class="icon-box blue-icon">
-                                <i class="fa-solid fa-gear"></i>
-                            </div>
-                            <span>Technical SEO</span>
-                        </div>
+                        
                         
                         <!-- Floating Card 4: Top Left (New) -->
                         <div class="float-pill card-pos-4">
@@ -885,12 +871,7 @@
                         </div>
 
                         <!-- Floating Card 5: Bottom Left (New) -->
-                        <div class="float-pill card-pos-5">
-                            <div class="icon-box green-icon">
-                                <i class="fa-solid fa-chart-line"></i>
-                            </div>
-                            <span>Competitor Analysis</span>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -1021,37 +1002,36 @@ connecting businesses with customers at the right moment.
     <!-- SECTION 2: Our SEO Approach (Clean Cards) -->
     <section class="approach-section" style="background: #f9f9f9;">
         <div class="auto-container">
-            <div class="section-header-left row align-items-end mb-5">
-                <div class="col-lg-6">
+            <div class="section-header-left row align-items-center mb-5">
+                <div class="col-lg-5">
                     <h2>Our SEO <span style="color:var(--primary-color);">Approach</span></h2>
                     <p class="text-muted">SEO services are built around business objectives rather than generic tactics. The approach focuses on improving search visibility, strengthening website structure and performance, aligning content with user intent, driving consistent organic traffic, and building long-term online authority.</p>
                 </div>
-                <div class="col-lg-6 text-lg-right">
-                   
+                <!-- Right Grid -->
+                <div class="col-lg-7"> <!-- Slightly wider for grid -->
+                    <div class="approach-grid">
+                        <div class="approach-card">
+                            <span class="step-num">01</span>
+                            <h5>Visibility</h5>
+                            <p>Improving search visibility through technical excellence.</p>
+                        </div>
+                        <div class="approach-card">
+                            <span class="step-num">02</span>
+                            <h5>Structure</h5>
+                            <p>Strengthening website structure and performance.</p>
+                        </div>
+                        <div class="approach-card">
+                            <span class="step-num">03</span>
+                            <h5>Content</h5>
+                            <p>Aligning content with specific user intent.</p>
+                        </div>
+                        <div class="approach-card">
+                            <span class="step-num">04</span>
+                            <h5>Authority</h5>
+                            <p>Building long-term online authority and trust.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="approach-grid">
-                 <div class="approach-card">
-                     <span class="step-num">01</span>
-                     <h5>Visibility</h5>
-                     <p>Improving search visibility through technical excellence.</p>
-                 </div>
-                 <div class="approach-card">
-                     <span class="step-num">02</span>
-                     <h5>Structure</h5>
-                     <p>Strengthening website structure and performance.</p>
-                 </div>
-                 <div class="approach-card">
-                     <span class="step-num">03</span>
-                     <h5>Content</h5>
-                     <p>Aligning content with specific user intent.</p>
-                 </div>
-                 <div class="approach-card">
-                     <span class="step-num">04</span>
-                     <h5>Authority</h5>
-                     <p>Building long-term online authority and trust.</p>
-                 </div>
             </div>
         </div>
     </section>
@@ -1062,7 +1042,7 @@ connecting businesses with customers at the right moment.
             <div class="row align-items-center">
                 <div class="col-lg-6">
                      <div class="image-stack text-center">
-                         <img src="assets/images/generated/isometric_seo_growth.png" alt="SEO Growth" class="img-fluid" style="max-height: 400px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));">
+                         <img src="assets/images/seo_best_for_03.png" alt="Who SEO Is Best For" class="img-fluid" style="filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));">
                      </div>
                 </div>
                 <div class="col-lg-6 pl-lg-5">
@@ -1080,77 +1060,144 @@ connecting businesses with customers at the right moment.
 
     <!-- SECTION 4: Long-Term Growth (Orbital Ecosystem) -->
     <!-- SECTION 4: Long-Term Growth (Dark Channel) -->
-    <section class="growth-channel-dark-section">
+    <!-- SECTION 4: Long-Term Growth (Dark Channel) - UPDATED DESIGN -->
+    <section class="growth-channel-design-v2">
         <div class="auto-container">
             <div class="row align-items-center">
                 <!-- Left Content -->
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <div class="growth-channel-content">
-                        <h2 class="section-title-dark">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="growth-channel-content-v2">
+                        <h2 class="display-4 fw-bold mb-4">
                             SEO as a Long-Term <br>
-                            <span class="text-orange">Growth Channel</span>
+                            <span style="color: var(--primary-color);">Growth Channel</span>
                         </h2>
-                        <p class="section-desc-dark">
+                        <p class="text-muted mb-5" style="font-size: 1.1rem; line-height: 1.8;">
                             SEO is an ongoing process that builds momentum over time. When implemented correctly, it becomes a reliable channel that delivers traffic, trust, and business growth well beyond the initial phase.
                         </p>
-                        <a href="#form" class="btn-consultation-orange">Get A Free SEO Consultation</a>
+                        <a href="#form" class="btn-theme-orange-pill">Start Your SEO Growth Journey</a>
                     </div>
                 </div>
                 
-                <!-- Right Image (Circular) -->
-                <div class="col-lg-6 text-center">
-                     <div class="growth-image-circle-wrapper">
-                         <!-- Using a placeholder image or existing asset. Replace 'assets/images/about.jpg' with the correct image if needed -->
-                         <img src="assets/images/people-with-laptops-office[1].jpg" alt="SEO Growth Team" class="growth-circle-img">
+                <!-- Right Image (Angled Background) -->
+                <div class="col-lg-6 offset-lg-1 text-center position-relative">
+                     <div class="angled-bg-wrapper">
+                         <!-- Angled Background Shapes -->
+                         <div class="angle-shape top-right"></div>
+                         <div class="angle-shape bottom-left"></div>
+                         
+                         <!-- Main Image -->
+                         <img src="assets/images/seo_growth_laptop.jpg" alt="SEO Growth Dashboard" class="img-fluid position-relative z-index-2 w-100 shadow-lg">
                      </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <style>
+        .growth-channel-design-v2 {
+            padding: 100px 0;
+            background-color: #fff6f3; /* Warmer pink/beige tone to match design */
+        }
+        
+        .growth-channel-content-v2 h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            line-height: 1.1;
+        }
+        
+        /* Angled Background Implementation */
+        .angled-bg-wrapper {
+            position: relative;
+            display: inline-block;
+            margin: 20px; /* Give space for the background to poke out */
+        }
+        
+        /* Single large rotated shape behind */
+        .angled-bg-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -15px; 
+            bottom: -15px;
+            left: -40px;
+            right: -40px;
+            background: var(--primary-color);
+            transform: rotate(-6deg);
+            z-index: 1;
+            border-radius: 4px;
+        }
+        
+        .angled-bg-wrapper img {
+            position: relative;
+            z-index: 2; /* Sits on top */
+            border-radius: 8px; /* Slightly smoother corners */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15); /* Stronger shadow */
+            max-width: 100%;
+        }
+
+        /* Adjusted button style to match the flat/bold look if needed, 
+           but the pill shape was heavily requested. Ensuring it pops. */
+        .btn-theme-orange-pill {
+            box-shadow: 0 10px 20px rgba(249, 74, 41, 0.4); 
+        }
+    </style>
+
 
 
     <!-- SECTION 5: Pre-Footer CTA -->
 
 
-    <!-- SECTION 5: Pre-Footer CTA (Light V2) -->
+    <!-- SECTION 5: Pre-Footer CTA (Light V2) - UPDATED DESIGN -->
     <section class="pre-footer-cta-light" id="form">
         <div class="auto-container">
             <div class="row align-items-center">
                 <!-- Left Content -->
-                <div class="col-lg-6 light-theme-content">
-                    <span style="color: var(--primary-color); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">Grow Your Business</span>
-                    <h3>Let’s Improve Your <br><span style="color:var(--primary-color);">Online Visibility</span></h3>
-                    <p>Stop losing customers to competitors who rank higher than you. Our SEO strategies are designed to bring qualified traffic, generate leads, and build long-term authority.</p>
+                <div class="col-lg-6 light-theme-content pr-lg-5">
+                    <h3 class="display-4 fw-bold mb-3">Let’s Improve Your <span style="color:var(--primary-color);">Online Visibility</span></h3>
+                    <p class="mb-4">If the goal is to reach the right audience, generate quality enquiries, and grow organically, SEO provides a strong and scalable foundation.</p>
                     
-                    <ul class="feature-list-red mt-4">
-                        <li><i class="fa-solid fa-check icon-wrapper"></i> <strong>Free Website Audit</strong> included</li>
-                        <li><i class="fa-solid fa-check icon-wrapper"></i> <strong>Competitor Analysis</strong> report</li>
-                    </ul>
+                    <div class="d-flex flex-wrap align-items-center gap-3 button-group-responsive">
+                        <a href="#audit" class="btn-theme-orange-pill mr-3">Request An SEO Audit</a>
+                        <a href="#consultation" class="btn-text-arrow">Schedule A Consultation <i class="fa-solid fa-arrow-right ml-2"></i></a>
+                    </div>
                 </div>
                 
                 <!-- Right Form -->
                 <div class="col-lg-5 offset-lg-1">
-                     <div class="light-form-card">
-                         <h4 class="mb-4 text-center">Get Your Free Strategy</h4>
+                     <div class="light-form-card-v2">
+                         <div class="text-center mb-4">
+                             <h4 class="form-title">Get In Touch</h4>
+                             <p class="form-subtitle">We’re always ready to help you. Grab it today</p>
+                         </div>
+                         
                          <form action="send_web_dev_mail.php" method="POST">
                              <input type="hidden" name="service" value="SEO Services Light Theme">
-                             <div class="row">
-                                 <div class="col-md-12 form-group">
-                                     <input type="text" name="name" required placeholder="Full Name" class="form-control-light">
-                                 </div>
-                                 <div class="col-md-12 form-group">
-                                     <input type="email" name="email" required placeholder="Email Address" class="form-control-light">
-                                 </div>
-                                 <div class="col-md-12 form-group">
-                                     <input type="tel" name="phone" required placeholder="Phone Number" class="form-control-light">
-                                 </div>
-                                 <div class="col-12 form-group">
-                                     <textarea name="message" rows="3" placeholder="Website URL or Message" class="form-control-light"></textarea>
-                                 </div>
-                                 <div class="col-12 mt-2">
-                                     <button type="submit" class="btn-theme-orange">Claim Free Audit</button>
-                                 </div>
+                             
+                             <div class="form-group-icon">
+                                 <i class="fa-solid fa-user input-icon"></i>
+                                 <input type="text" name="name" required placeholder="Your Name" class="form-control-pill">
+                             </div>
+
+                             <div class="form-group-icon">
+                                 <i class="fa-solid fa-envelope input-icon"></i>
+                                 <input type="email" name="email" required placeholder="Email Address" class="form-control-pill">
+                             </div>
+
+                             <div class="form-group">
+                                 <select name="service_type" class="form-control-pill select-service">
+                                     <option value="" disabled selected>Select Service</option>
+                                     <option value="SEO Audit">SEO Audit</option>
+                                     <option value="Consultation">Consultation</option>
+                                     <option value="Full SEO Service">Full SEO Service</option>
+                                 </select>
+                             </div>
+
+                             <div class="form-group">
+                                 <textarea name="message" rows="4" placeholder="Write Message" class="form-control-rounded"></textarea>
+                             </div>
+
+                             <div class="mt-4">
+                                 <button type="submit" class="btn-theme-orange-full">Send Message <i class="fa-solid fa-paper-plane ml-2"></i></button>
                              </div>
                          </form>
                      </div>
@@ -1165,76 +1212,166 @@ connecting businesses with customers at the right moment.
         /* Modern Light Theme Pre-Footer */
         .pre-footer-cta-light {
             padding: 100px 0;
-            background: linear-gradient(to right, #fff5f2, #ffffff); /* Soft Orange Mesh */
+            background: #ffffff;
             position: relative;
         }
-        
+
+        /* Typography */
         .light-theme-content h3 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 800;
             color: #1a1a1a;
-            margin-bottom: 20px;
+            line-height: 1.2;
         }
         .light-theme-content p {
-            font-size: 1.15rem;
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 30px;
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+            max-width: 90%;
+            margin-bottom: 35px;
+        }
+
+        /* Buttons */
+        .btn-theme-orange-pill {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(249, 74, 41, 0.3);
+            transition: all 0.3s;
+            border: none;
+        }
+        .btn-theme-orange-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(249, 74, 41, 0.4);
+            color: white;
+            background: #e04325;
+        }
+
+        .btn-text-arrow {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            transition: 0.3s;
+        }
+        .btn-text-arrow:hover {
+            color: #d1361b;
+            text-decoration: none;
+            padding-left: 5px; /* Subtle movement */
         }
         
-        .light-form-card {
+        /* Form Card V2 */
+        .light-form-card-v2 {
             background: #ffffff;
-            padding: 40px;
+            padding: 50px 40px;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05); /* Clean Shadow */
-            border-top: 5px solid var(--primary-color); /* Orange Accent */
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08); /* Soft drop shadow */
+            border: 1px solid #f0f0f0;
+        }
+
+        .form-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 5px;
+        }
+        .form-subtitle {
+            color: #888;
+            font-size: 0.95rem;
         }
         
-        .light-form-card .form-group {
-            margin-bottom: 25px; /* Increased spacing between fields */
+        /* Form Controls */
+        .form-group-icon {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .input-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 14px;
+            z-index: 2;
         }
         
-        .form-control-light {
-            background: #f8f9fa;
-            border: 1px solid #eee;
-            color: #333;
-            border-radius: 8px;
-            padding: 15px 20px;
+        .form-control-pill {
+            background: #fbfbfb;
+            border: 1px solid #e5e5e5;
+            color: #444;
+            border-radius: 50px; /* Pill shape */
+            padding: 15px 20px 15px 45px; /* Left padding for icon */
             width: 100%;
-            height: auto;
+            height: 52px;
             font-size: 0.95rem;
             transition: all 0.3s;
         }
-        .form-control-light:focus {
+        /* Adjust for no icon fields like select */
+        select.form-control-pill {
+             padding-left: 20px;
+             appearance: none;
+             background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+             background-repeat: no-repeat;
+             background-position: right 20px top 50%;
+             background-size: 10px auto;
+        }
+
+        .form-control-rounded {
+            background: #fbfbfb;
+            border: 1px solid #e5e5e5;
+            color: #444;
+            border-radius: 20px; /* Rounded rect for textarea */
+            padding: 15px 20px;
+            width: 100%;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            resize: none;
+        }
+
+        .form-control-pill:focus, 
+        .form-control-rounded:focus {
             background: #fff;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(249, 74, 41, 0.1);
             outline: none;
         }
         
-        /* Theme Button */
-        .btn-theme-orange {
+        .form-group {
+             margin-bottom: 20px;
+        }
+
+        .btn-theme-orange-full {
             background: var(--primary-color);
             color: white;
-            padding: 18px 40px;
-            border-radius: 8px;
+            padding: 16px;
+            border-radius: 50px;
             font-weight: 700;
             width: 100%;
             border: none;
             transition: all 0.3s;
-            box-shadow: 0 10px 20px rgba(249, 74, 41, 0.2);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .btn-theme-orange:hover {
+        .btn-theme-orange-full:hover {
             background: #e04325;
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(249, 74, 41, 0.3);
+            box-shadow: 0 10px 20px rgba(249, 74, 41, 0.2);
             color: white;
+            cursor: pointer;
         }
-
-        /* Gradient Button for Features */
+        
+        /* RESTORED: Gradient Button for other sections */
         .btn-theme-gradient {
             background: linear-gradient(135deg, #ff9a9e 0%, var(--primary-color) 100%);
-            color: white;
+            color: white !important;
             padding: 15px 35px;
             border-radius: 50px;
             font-weight: 700;
@@ -1242,12 +1379,34 @@ connecting businesses with customers at the right moment.
             transition: all 0.3s;
             display: inline-block;
             box-shadow: 0 10px 20px rgba(249, 74, 41, 0.2);
+            text-decoration: none;
         }
         .btn-theme-gradient:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 30px rgba(249, 74, 41, 0.3);
             color: white;
             text-decoration: none;
+        }
+
+        @media(max-width: 991px) {
+            .button-group-responsive {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .btn-theme-orange-pill {
+                margin-bottom: 15px;
+            }
+            .light-theme-content {
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            .button-group-responsive {
+                align-items: center;
+                justify-content: center;
+            }
+            .light-theme-content p {
+                margin: 0 auto 30px;
+            }
         }
     </style>
 

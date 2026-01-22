@@ -902,3 +902,158 @@ select.contact-input {
     }
 }
 
+/* --- SEO Approach Section (Grid Layout) --- */
+.approach-section {
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.approach-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.approach-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    border-color: rgba(249, 74, 41, 0.2);
+}
+
+.approach-card .step-num {
+    display: block;
+    font-size: 2.5rem; /* Large Number */
+    font-weight: 800;
+    color: rgba(249, 74, 41, 0.15); /* Faint Brand Color */
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+.approach-card h5 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+.approach-card h5:hover {
+    color: var(--primary-color);
+}
+
+.approach-card p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+@media (max-width: 991px) {
+    .approach-grid {
+        grid-template-columns: 1fr; /* Stack on mobile */
+        margin-top: 40px;
+    }
+}
+
+
+/* --- SEO Growth Section (Light with Angled Background) --- */
+.growth-channel-light-section {
+    padding: 100px 0;
+    background-color: #fffbf9; /* Very Light Orange/Pink Tint */
+    overflow: visible; /* Allow angled bg to protrude if needed, or hidden if contained */
+    overflow-x: hidden;
+}
+
+.section-title-light {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    color: #1a1a1a;
+}
+
+.section-title-light .text-orange {
+    color: var(--primary-color);
+}
+
+.section-desc-light {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 35px;
+    max-width: 500px;
+}
+
+/* Angled Image Wrapper */
+.angled-image-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 20px; /* Space for the background to show */
+    z-index: 1;
+}
+
+.angled-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    bottom: -15px;
+    left: -40px;
+    right: -40px;
+    background: var(--primary-color);
+    transform: rotate(-6deg);
+    z-index: -1;
+    border-radius: 4px;
+}
+
+/* Optional second shape for more depth */
+.angled-image-wrapper::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(249, 74, 41, 0.2); /* Fainter orange */
+    transform: rotate(2deg);
+    z-index: -2;
+    border-radius: 4px;
+}
+
+.angled-img {
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    background: #fff; /* Ensure no transparent bg */
+}
+
+@media (max-width: 991px) {
+    .angled-image-wrapper {
+        margin-top: 50px;
+    }
+    .section-title-light {
+        text-align: center;
+        font-size: 2.2rem;
+    }
+    .section-desc-light {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .growth-channel-content {
+        text-align: center;
+    }
+}
