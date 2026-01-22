@@ -1498,24 +1498,141 @@ connecting businesses with customers at the right moment.
             text-decoration: none;
         }
 
-        @media(max-width: 991px) {
-            .button-group-responsive {
+        /* =========================================
+           MOBILE RESPONSIVENESS OVERRIDES
+           ========================================= */
+        
+        @media (max-width: 991px) {
+            /* General */
+            h2, .display-4 {
+                font-size: 2.5rem !important; 
+            }
+            .auto-container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            section {
+                padding: 60px 0 !important;
+            }
+
+            /* Hero Section */
+            .hero-new-design {
+                padding-top: 60px;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+                margin-bottom: 20px;
+            }
+            .hero-desc {
+                margin: 0 auto 30px;
+            }
+            .btn-group-custom {
+                justify-content: center;
+            }
+            .hero-visual-ref {
+                margin-top: 50px;
+                height: auto;
+            }
+            .hero-person-img {
+                max-width: 80%;
+                margin-bottom: 0;
+            }
+            /* Hide floating pills on small screens to prevent clutter/overlap */
+            .float-pill {
+                display: none; 
+            }
+
+            /* Section 1: Real Business Growth */
+            .growth-content-sticky {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .growth-cards-stack {
+                margin-top: 20px;
+            }
+            .how-seo-helps-card {
+                margin-top: 40px !important;
+                padding: 40px 20px !important;
+            }
+
+            /* Section 2: Approach */
+            .section-header-left {
+                text-align: center;
+            }
+            .approach-grid {
+                grid-template-columns: 1fr; /* Stack cards */
+                margin-top: 30px;
+            }
+            .approach-card {
+                text-align: left;
+            }
+
+            /* Section 3: Who For */
+            .who-for-section .row {
+                flex-direction: column-reverse; /* Image on top? Or bottom. Standard is text first on mobile usually, or image first. Keeping DOM order: Image first. */
+            }
+            .who-for-section .col-lg-6 {
+                text-align: center;
+                padding-left: 15px !important; /* Reset padding */
+            }
+            .image-stack {
+                margin-bottom: 40px;
+            }
+            .custom-geo-list {
+                display: inline-block;
+                text-align: left;
+            }
+
+            /* Section 4: Long Term Growth v2 */
+            .growth-channel-design-v2 .row {
                 flex-direction: column;
-                align-items: flex-start;
             }
-            .btn-theme-orange-pill {
-                margin-bottom: 15px;
-            }
-            .light-theme-content {
+            .growth-channel-content-v2 {
                 text-align: center;
                 margin-bottom: 50px;
             }
+            .angled-bg-wrapper::before {
+                left: -20px;
+                right: -20px;
+                top: -10px;
+                bottom: -10px;
+            }
+
+            /* Section 5: Pre-Footer Form */
+            .pre-footer-cta-light .row {
+                flex-direction: column;
+            }
+            .light-theme-content {
+                text-align: center;
+                padding-right: 15px !important;
+                margin-bottom: 50px;
+            }
+            .light-theme-content h3 {
+                font-size: 2.2rem;
+            }
             .button-group-responsive {
-                align-items: center;
                 justify-content: center;
             }
-            .light-theme-content p {
-                margin: 0 auto 30px;
+            .btn-theme-orange-pill {
+                margin-bottom: 15px;
+                margin-right: 0 !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            h2, .display-4 {
+                font-size: 2rem !important;
+            }
+            .btn-theme-orange-pill, 
+            .btn-theme-orange-full {
+                width: 100%;
+                text-align: center;
+                padding-left: 20px;
+                padding-right: 20px;
             }
         }
     </style>
