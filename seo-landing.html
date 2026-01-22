@@ -407,9 +407,9 @@
             box-shadow: none; /* No shadow on container */
             border: none;
             display: flex;
-            flex-direction: column; /* Vertical layout */
+            flex-direction: row; /* Horizontal layout */
             align-items: center;
-            gap: 8px; /* Distinct gap */
+            gap: 12px; /* Distinct gap */
             z-index: 3;
             animation: float-pill 4s ease-in-out infinite;
         }
@@ -420,23 +420,25 @@
         }
         .float-pill span {
             background: white; /* Small label background for readability */
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.85rem;
+            padding: 8px 15px; /* Comfortable padding */
+            border-radius: 8px; /* Slightly rounded rectangle */
+            font-size: 0.8rem; /* Smaller text */
             font-weight: 700;
             color: #1a1a1a;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Softer shadow */
+            border: 1px solid #f0f0f0; /* Rectangular border */
+            white-space: nowrap; /* Prevent wrapping */
         }
         .float-pill .icon-box {
-            width: 55px; /* Slightly larger icon */
-            height: 55px;
-            border-radius: 18px; /* Soft square */
+            width: 45px; /* Smaller icon */
+            height: 45px;
+            border-radius: 12px; /* Soft square */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
         .float-pill:hover .icon-box {
@@ -839,7 +841,8 @@
                         </h1>
                         <p class="hero-desc">We help businesses become visible where it matters, attract high-intent traffic, and turn website visits into real growth.</p>
                         <div class="btn-group-custom">
-                            <a href="#form" class="btn-custom">Get Started</a>
+                            <a href="#form" class="btn-theme-orange-pill">Get Free SEO Audit (24 hours)</a>
+                          
                         </div>
                     </div>
                 </div>
@@ -1009,7 +1012,7 @@ connecting businesses with customers at the right moment.
                     <p class="text-muted mb-4" style="font-size: 1.1rem; line-height: 1.8;">
                         SEO services built around business objectives rather than generic tactics. The approach focuses on improving search visibility, strengthening website structure, aligning content with user intent, and driving consistent organic growth.
                     </p>
-                    <a href="#form" class="btn-theme-orange-pill">Talk To An SEO Expert</a>
+                    <a href="#form" class="btn-theme-orange-pill">Talk to SEO Expert</a>
                 </div>
                 <!-- Right Grid -->
                 <div class="col-lg-7"> 
@@ -1141,7 +1144,7 @@ connecting businesses with customers at the right moment.
                         <p class="text-muted mb-5" style="font-size: 1.1rem; line-height: 1.8;">
                             SEO is an ongoing process that builds momentum over time. When implemented correctly, it becomes a reliable channel that delivers traffic, trust, and business growth well beyond the initial phase.
                         </p>
-                        <a href="#form" class="btn-theme-orange-pill">Start Your SEO Growth Journey</a>
+                        <a href="#form" class="btn-theme-orange-pill">Get SEO Proposal</a>
                     </div>
                 </div>
                 
@@ -1315,6 +1318,139 @@ connecting businesses with customers at the right moment.
             </div>
         </div>
     </section>
+
+    <!-- SECTION 6: FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="auto-container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="sec-title text-center mb-5">
+                        <h2 class="display-4 fw-bold">Frequently Asked <span style="color:var(--primary-color);">Questions</span></h2>
+                        <p class="text-muted">Common questions about our SEO services and process.</p>
+                    </div>
+                    
+                    <div class="accordion" id="seoFaqAccordion">
+                        <!-- FAQ 1 -->
+                        <div class="card faq-card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed d-flex justify-content-between align-items-center" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        How long does SEO take to see results?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#seoFaqAccordion">
+                                <div class="card-body">
+                                    SEO is a long-term strategy. Typically, you can expect to see initial traction and ranking improvements within 3-6 months. Significant growth and ROI usually kick in around the 6-12 month mark as authority builds.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="card faq-card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed d-flex justify-content-between align-items-center" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        What is included in your SEO services?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#seoFaqAccordion">
+                                <div class="card-body">
+                                    Our comprehensive SEO package includes a technical website audit, keyword research & strategy, on-page optimization, content creation/refinement, high-quality link building, and monthly performance reporting.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="card faq-card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed d-flex justify-content-between align-items-center" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        What is the monthly cost?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#seoFaqAccordion">
+                                <div class="card-body">
+                                    Costs vary depending on your website's size, current status, and competition level. We offer custom packages tailored to your specific goals. Contact us for a free audit and a precise quote.
+                                </div>
+                            </div>
+                        </div>
+                        
+                         <!-- FAQ 4 -->
+                        <div class="card faq-card">
+                            <div class="card-header" id="headingFour">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed d-flex justify-content-between align-items-center" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        Do you guarantee #1 rankings?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#seoFaqAccordion">
+                                <div class="card-body">
+                                    No ethical SEO agency can guarantee a specific ranking because search algorithms are controlled by Google. However, we have a proven track record of significantly improving rankings and traffic for our clients using white-hat best practices.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .faq-section {
+            padding: 100px 0;
+            background: #fafafa;
+        }
+        .faq-card {
+            border: none;
+            margin-bottom: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+        }
+        .faq-card .card-header {
+            background: #fff;
+            border-bottom: none;
+            padding: 0;
+        }
+        .faq-card .btn-link {
+            color: #1a1a1a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 25px 30px;
+            width: 100%;
+            text-align: left;
+            transition: all 0.3s;
+        }
+        .faq-card .btn-link:hover {
+            color: var(--primary-color);
+            background: #fffcfb;
+        }
+        .faq-card .btn-link::after {
+            content: '\f107'; /* FontAwesome Angle Down */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            transition: transform 0.3s;
+            color: var(--primary-color);
+            margin-left: 15px;
+        }
+        .faq-card .btn-link[aria-expanded="true"]::after {
+            transform: rotate(180deg);
+        }
+        .faq-card .card-body {
+            padding: 0 30px 30px;
+            color: #666;
+            line-height: 1.7;
+            border-top: none;
+            font-size: 1rem;
+        }
+    </style>
 
     <style>
         .text-left { text-align: left !important; }
@@ -1504,6 +1640,9 @@ connecting businesses with customers at the right moment.
         
         @media (max-width: 991px) {
             /* General */
+            .nav-cta {
+                display: none !important;
+            }
             h2, .display-4 {
                 font-size: 2.5rem !important; 
             }
@@ -1542,9 +1681,30 @@ connecting businesses with customers at the right moment.
                 max-width: 80%;
                 margin-bottom: 0;
             }
-            /* Hide floating pills on small screens to prevent clutter/overlap */
+            /* Enable floating pills on small screens but adjust position */
             .float-pill {
-                display: none; 
+                display: flex !important;
+                transform: scale(0.7); /* Reduced size further */
+                z-index: 10;
+            }
+            /* Reposition specific cards to avoid covering face */
+            /* Left Card: Move further left/up */
+            .card-left { 
+                top: 25%; 
+                left: -15px; 
+            }
+            /* Purple Card (Top Left previously): Move to bottom left */
+            .card-pos-4 { 
+                top: auto; 
+                bottom: 5%; 
+                left: -5px; 
+            }
+            
+            /* Ensure container has overflow visible if needed, or enough padding */
+            .hero-visual-ref {
+                overflow: visible;
+                margin-left: 15px;
+                margin-right: 15px;
             }
 
             /* Section 1: Real Business Growth */
