@@ -763,6 +763,7 @@
     .glass-card { bottom: 20px; }
     .cta-box-gradient { padding: 40px 20px; text-align: center; }
     .col-lg-5.text-lg-right { text-align: center !important; }
+<<<<<<< HEAD
 }
 
 .growth-card-light {
@@ -993,7 +994,6 @@
 }
 
 .text-left { text-align: left !important; }
-        
 /* Modern Light Theme Pre-Footer */
 .pre-footer-cta-light {
     padding: 100px 0;
@@ -1220,11 +1220,31 @@ select.form-control-pill {
         max-width: 80%;
         margin-bottom: 0;
     }
+<<<<<<< HEAD
     /* Enable floating pills on small screens but adjust position */
     .float-pill {
         display: flex !important;
         transform: scale(0.7); /* Reduced size further */
         z-index: 10;
+=======
+    /* Enable floating pills on small screens but adjust position and size strictly */
+    .float-pill {
+        display: flex !important;
+        /* transform: scale(0.7); Removed scaling in favor of explicit sizes below */
+        z-index: 10;
+        gap: 8px; /* Reduce gap */
+    }
+    .float-pill .icon-box {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+    .float-pill span {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+        border-radius: 6px;
+>>>>>>> 8eec2914fb95208149c490a6a32fdd45bb5d9d53
     }
     /* Reposition specific cards to avoid covering face */
     /* Left Card: Move further left/up */
@@ -1237,6 +1257,18 @@ select.form-control-pill {
         top: auto; 
         bottom: 5%; 
         left: -5px; 
+    }
+    /* New Mobile Positions */
+    .card-top-right {
+        top: 10%;
+        right: -10px;
+    }
+    .card-bottom-right {
+        bottom: 25%;
+        right: -5px;
+    }
+    .card-pos-5 {
+        display: none !important;
     }
     
     /* Ensure container has overflow visible if needed, or enough padding */
@@ -1321,6 +1353,7 @@ select.form-control-pill {
         margin-bottom: 15px;
         margin-right: 0 !important;
     }
+<<<<<<< HEAD
 }
 
 @media (max-width: 767px) {
@@ -1338,6 +1371,21 @@ select.form-control-pill {
     }
     .float-pill {
         gap: 8px; /* Reduce gap */
+=======
+
+    /* Mobile Menu Text Styling Overrides */
+    .mobile-menu .navigation li > a {
+        font-family: var(--title-font) !important; /* Oswald */
+        font-weight: 700 !important;
+        font-size: 20px !important;
+        letter-spacing: 0.5px;
+        text-transform: uppercase !important;
+        padding: 15px 20px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .mobile-menu .navigation li:last-child > a {
+        border-bottom: none;
+>>>>>>> 8eec2914fb95208149c490a6a32fdd45bb5d9d53
     }
 }
 
@@ -1350,13 +1398,18 @@ select.form-control-pill {
     }
     .btn-theme-orange-pill, 
     .btn-theme-orange-full {
+<<<<<<< HEAD
         width: 100%;
+=======
+        
+>>>>>>> 8eec2914fb95208149c490a6a32fdd45bb5d9d53
         text-align: center;
         padding-left: 20px;
         padding-right: 20px;
     }
 }
 
+<<<<<<< HEAD
 /* Mobile Menu Active State - Sidebar Style */
 
 /* Hide close button on desktop */
@@ -1479,6 +1532,8 @@ select.form-control-pill {
     }
 }
 
+=======
+>>>>>>> 8eec2914fb95208149c490a6a32fdd45bb5d9d53
 /* Typing cursor effect */
 .typing-text.cursor-active::after {
     content: '|';
