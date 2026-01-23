@@ -269,7 +269,7 @@
 
 /* 1. New Glassmorphism Hero */
 .hero-new-design {
-    padding: 100px 0 80px;
+    padding: 80px 0 50px;
     background: radial-gradient(circle at 10% 20%, #fff9f6 0%, #fff 100%);
     position: relative;
     overflow: hidden;
@@ -439,7 +439,7 @@
 
 /* 2. Growth Features - Unique Dark Design */
 .growth-features-dark {
-    padding: 120px 0;
+    padding: 80px 0;
     background: #0f172a; /* Dark Navy */
     position: relative;
     overflow: hidden;
@@ -538,7 +538,7 @@
 
 /* 3. Approach (Split Layout) */
 .approach-section-split {
-    padding: 100px 0;
+    padding: 60px 0;
     background: #fafafa;
 }
 
@@ -611,7 +611,7 @@
 
 /* 4. Who For Section */
 .who-for-section {
-    padding: 100px 0;
+    padding: 60px 0;
 }
 .check-list-modern li {
     font-size: 1.1rem;
@@ -634,7 +634,7 @@
 
 /* 5. Growth Chart */
 .growth-chart-section {
-    padding: 80px 0;
+    padding: 50px 0;
     background: #fafafa;
 }
 .chart-visual-placeholder {
@@ -673,7 +673,7 @@
 
 /* 6. Pre-Footer Modern - Redesign */
 .pre-footer-cta-modern {
-    padding: 80px 0;
+    padding: 60px 0;
     background: #f8fafc; /* Light section bg to make the dark card pop */
 }
 .cta-box-gradient {
@@ -1354,6 +1354,128 @@ select.form-control-pill {
         text-align: center;
         padding-left: 20px;
         padding-right: 20px;
+    }
+}
+
+/* Mobile Menu Active State - Sidebar Style */
+
+/* Hide close button on desktop */
+.mobile-close-btn {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    /* Backdrop */
+    .mobile-menu-backdrop {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 998;
+        background: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-backdrop.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Sidebar Navigation */
+    .floating-nav ul.nav-links {
+        display: none; /* Changed from block !important to hidden by default */
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 300px;
+        max-width: 100%;
+        height: 100vh;
+        background: var(--primary-color);
+        z-index: 999;
+        padding: 80px 30px;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        overflow-y: auto;
+    }
+
+    .floating-nav ul.nav-links.active {
+        display: block; /* Show when active */
+        transform: translateX(0);
+        position: fixed;
+    }
+    
+    .floating-nav ul.nav-links .nav-logo-mobile {
+        display: block;
+        margin-bottom: 30px;
+    }
+    
+    .floating-nav ul.nav-links li {
+        text-align: left;
+        width: 100%;
+        display: block;
+        margin-bottom: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .floating-nav ul.nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    .floating-nav ul.nav-links li a {
+        color: #ffffff;
+        font-size: 1.1rem;
+        display: block;
+        padding: 15px 0;
+        font-weight: 600;
+    }
+    
+    .floating-nav ul.nav-links li a:hover {
+        color: rgba(255,255,255,0.8);
+        padding-left: 10px;
+    }
+    
+    /* CTA in sidebar */
+    .floating-nav .nav-cta {
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        background: white;
+        color: var(--primary-color) !important;
+    }
+    
+    .floating-nav .nav-cta:hover {
+        background: #f0f0f0;
+        transform: translateY(-2px);
+    }
+    
+    .floating-nav {
+        overflow: visible !important; 
+    }
+    
+    /* Close Button Style inside menu (Handled by JS appending it or existing toggle) */
+    .mobile-close-btn {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.2);
+        border-radius: 50%;
+        transition: 0.3s;
+    }
+    .mobile-close-btn:hover {
+        background: rgba(255,255,255,0.4);
+        transform: rotate(90deg);
     }
 }
 
