@@ -797,6 +797,22 @@
             .glass-card { bottom: 20px; }
             .cta-box-gradient { padding: 40px 20px; text-align: center; }
             .col-lg-5.text-lg-right { text-align: center !important; }
+
+            /* Mobile Menu Active State */
+            .floating-nav ul.nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+                border-radius: 20px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+                text-align: center;
+                gap: 15px;
+            }
         }
 
     </style>
@@ -865,6 +881,22 @@
                         <!-- Floating Card 3: Bottom Right -->
                         
                         
+                        <!-- Floating Card 2: Top Right -->
+                        <div class="float-pill card-top-right">
+                            <div class="icon-box blue-icon">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+                            <span>Rank #1</span>
+                        </div>
+                        
+                        <!-- Floating Card 3: Bottom Right -->
+                        <div class="float-pill card-bottom-right">
+                            <div class="icon-box green-icon">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <span>300% Growth</span>
+                        </div>
+
                         <!-- Floating Card 4: Top Left (New) -->
                         <div class="float-pill card-pos-4">
                             <div class="icon-box purple-icon">
@@ -874,7 +906,12 @@
                         </div>
 
                         <!-- Floating Card 5: Bottom Left (New) -->
-                        
+                        <div class="float-pill card-pos-5">
+                            <div class="icon-box blue-icon">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <span>Global Reach</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1681,11 +1718,23 @@ connecting businesses with customers at the right moment.
                 max-width: 80%;
                 margin-bottom: 0;
             }
-            /* Enable floating pills on small screens but adjust position */
+            /* Enable floating pills on small screens but adjust position and size strictly */
             .float-pill {
                 display: flex !important;
-                transform: scale(0.7); /* Reduced size further */
+                /* transform: scale(0.7); Removed scaling in favor of explicit sizes below */
                 z-index: 10;
+                gap: 8px; /* Reduce gap */
+            }
+            .float-pill .icon-box {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+                border-radius: 8px;
+            }
+            .float-pill span {
+                padding: 4px 10px;
+                font-size: 0.75rem;
+                border-radius: 6px;
             }
             /* Reposition specific cards to avoid covering face */
             /* Left Card: Move further left/up */
@@ -1698,6 +1747,18 @@ connecting businesses with customers at the right moment.
                 top: auto; 
                 bottom: 5%; 
                 left: -5px; 
+            }
+            /* New Mobile Positions */
+            .card-top-right {
+                top: 10%;
+                right: -10px;
+            }
+            .card-bottom-right {
+                bottom: 25%;
+                right: -5px;
+            }
+            .card-pos-5 {
+                display: none !important;
             }
             
             /* Ensure container has overflow visible if needed, or enough padding */
@@ -1793,7 +1854,7 @@ connecting businesses with customers at the right moment.
             }
             .btn-theme-orange-pill, 
             .btn-theme-orange-full {
-                width: 100%;
+                
                 text-align: center;
                 padding-left: 20px;
                 padding-right: 20px;
@@ -2039,5 +2100,30 @@ connecting businesses with customers at the right moment.
     </script>
     
 
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.querySelector('.mobile-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // Optional: Toggle icon between bars and times
+                    const icon = toggleBtn.querySelector('i');
+                    if (icon) {
+                        if (navLinks.classList.contains('active')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
