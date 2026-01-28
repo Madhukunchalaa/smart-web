@@ -2294,14 +2294,14 @@ body.mobile-menu-visible .mobile-menu .menu-backdrop {
 }
 
 .contact-text-wrapper .sub-heading {
-    font-size: 20px;
+    font-size: 26px; /* Increased from 20px */
     font-weight: 700;
     color: #444;
     margin-bottom: 10px;
 }
 
 .contact-text-wrapper .description {
-    font-size: 16px;
+    font-size: 18px; /* Increased from 16px */
     color: #666;
     margin-bottom: 40px;
 }
@@ -2311,7 +2311,7 @@ body.mobile-menu-visible .mobile-menu .menu-backdrop {
 }
 
 .consultation-box h5 {
-    font-size: 18px;
+    font-size: 20px; /* Increased from 18px */
     font-weight: 700;
     color: #333;
     margin-bottom: 15px;
@@ -2323,7 +2323,7 @@ body.mobile-menu-visible .mobile-menu .menu-backdrop {
 }
 
 .benefits-list li {
-    font-size: 15px;
+    font-size: 16px; /* Increased from 15px */
     color: #555;
     display: flex;
     align-items: center;
@@ -2335,13 +2335,13 @@ body.mobile-menu-visible .mobile-menu .menu-backdrop {
 }
 
 .tagline {
-    font-size: 18px;
+    font-size: 20px; /* Increased from 18px */
     color: #222;
     margin-bottom: 15px;
 }
 
 .small-text, .final-line {
-    font-size: 14px;
+    font-size: 16px; /* Increased from 14px */
     color: #777;
     margin-bottom: 15px;
     line-height: 1.6;
